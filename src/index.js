@@ -13,17 +13,19 @@ const fetching = () => {
 const render = () => {
   switch ($view) {
     case "customer":
-      body.innerHTML = "";
+      contentDiv.innerHTML = "";
       const customerTitle = document.createElement("h3");
       customerTitle.innerHTML = "customer view";
-      body.append(customerTitle);
+      contentDiv.append(customerTitle);
+      body.append(contentDiv);
       break;
 
     case "vendor":
-      body.innerHTML = "";
+      contentDiv.innerHTML = "";
       const vendorTitle = document.createElement("h3");
       vendorTitle.innerHTML = "vendor view";
-      body.append(vendorTitle);
+      contentDiv.append(vendorTitle);
+      body.append(contentDiv);
       break;
   }
 };
