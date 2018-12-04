@@ -65,25 +65,37 @@ fetching()
 
 
 const myModal = function(selectedVendor) {
-//modal
-modalDiv = document.createElement('div')
-modalDiv.className = 'modal'
-modalContent = document.createElement('div')
-modalContent.className = 'modal-content'
+    //modal
+    modalDiv = document.createElement('div')
+    modalDiv.className = 'modal'
+    modalContent = document.createElement('div')
+    modalContent.className = 'modal-content'
 
-//displayed in modal
-modalLocation = document.createElement('p')
-modalLocation.innerHTML = selectedVendor.location
-closeModal = document.createElement('span')
-closeModal.className = 'close'
-closeModal.innerHTML = 'X'
-closeModal.addEventListener('click', function(){
-    modalDiv.style.display = 'none'
-})
+    //displayed in modal
+    modalName = document.createElement('h3')
+    modalService = document.createElement('h4')
+    modalLocation = document.createElement('h4')
+    modalPhone = document.createElement('p')
+    modalWebsite = document.createElement('p')
+    modalDescription = document.createElement('p')
+    modalName.innerHTML = selectedVendor.name
+    modalService.innerHTML = selectedVendor.service
+    modalLocation.innerHTML = selectedVendor.location
+    modalPhone.innerHTML = selectedVendor.phone
+    modalWebsite.innerHTML = selectedVendor.website
+    modalDescription.innerHTML = selectedVendor.description
 
-//appending modal
-vendorDiv.append(modalDiv)
-modalDiv.append(modalContent)
-modalContent.append(modalLocation, closeModal)
+    closeModal = document.createElement('button')
+    closeModal.className = 'close'
+    closeModal.innerHTML = 'X'
+    closeModal.addEventListener('click', function(){
+        modalDiv.style.display = 'none'
+    })
+
+    //appending modal
+    vendorDiv.append(modalDiv)
+    modalDiv.append(modalContent)
+    modalContent.append(modalName, modalService, modalLocation, modalPhone, modalWebsite, modalDescription, closeModal)
 
 }
+
