@@ -1,5 +1,7 @@
 const body = document.querySelector('body')
 let vendors;
+let selectedVendor;
+
 const fetching = () => {
     fetch("http://localhost:3000/api/v1/vendors")
         .then(function (response) {
@@ -19,14 +21,12 @@ const renderAvailableVendors = function(){
     vendors.forEach(function(vendor){
         //creating elements
         vendorDiv = document.createElement('div')
-        modalDiv = document.createElement('div')
         vendorName = document.createElement('h2')
         vendorService = document.createElement('h3')
         vendorLogo = document.createElement('img')
         vendorInfoButton = document.createElement('button')
         
         //setting element properties
-        modalDiv.className = 'modal'
         vendorDiv.id = "vendor-div"
         vendorName.id = 'vendor-name'
         vendorService.id = 'vendor-service'
@@ -42,6 +42,33 @@ const renderAvailableVendors = function(){
         vendorInfoButton.innerHTML = 'More Information'
         
         
+        //modal
+        modalDiv = document.createElement('div')
+        modalDiv.className = 'modal'
+        modalContent = document.createElement('div')
+        modalContent.className = 'modal-content'
+        vendorInfoButton.addEventListener('click', function(){
+            console.log('test')
+            modalDiv.style.display = 'block'
+            
+        })
+        
+        //displayed in modal
+        modalLocation = document.createElement('p')
+        modalLocation.innerHTML = vendor.location
+        closeModal = document.createElement('span')
+        closeModal.className = 'close'
+        closeModal.innerHTML = 'X'
+        closeModal.addEventListener('click', function(){
+            modalDiv.style.display = 'none'
+        })
+
+        //appending modal
+        vendorDiv.append(modalDiv)
+        modalDiv.append(modalContent)
+        modalContent.append(modalLocation, closeModal)
+
+        
         //appending
         body.append(vendorsListedSection)
         vendorsListedSection.append(vendorDiv)
@@ -49,7 +76,10 @@ const renderAvailableVendors = function(){
         vendorDiv.append(vendorService)
         vendorDiv.append(vendorLogo)
         vendorDiv.append(vendorInfoButton)
+        
     })
 }
+
+
 
 fetching()
