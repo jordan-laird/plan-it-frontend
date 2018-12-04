@@ -40,35 +40,14 @@ const renderAvailableVendors = function(){
         vendorService.innerHTML = vendor.service
         vendorLogo.src = vendor.logo_img
         vendorInfoButton.innerHTML = 'More Information'
-        
-        
-        //modal
-        modalDiv = document.createElement('div')
-        modalDiv.className = 'modal'
-        modalContent = document.createElement('div')
-        modalContent.className = 'modal-content'
         vendorInfoButton.addEventListener('click', function(){
             console.log('test')
+            selectedVendor = vendor
+            myModal(selectedVendor)
             modalDiv.style.display = 'block'
             
         })
-        
-        //displayed in modal
-        modalLocation = document.createElement('p')
-        modalLocation.innerHTML = vendor.location
-        closeModal = document.createElement('span')
-        closeModal.className = 'close'
-        closeModal.innerHTML = 'X'
-        closeModal.addEventListener('click', function(){
-            modalDiv.style.display = 'none'
-        })
-
-        //appending modal
-        vendorDiv.append(modalDiv)
-        modalDiv.append(modalContent)
-        modalContent.append(modalLocation, closeModal)
-
-        
+    
         //appending
         body.append(vendorsListedSection)
         vendorsListedSection.append(vendorDiv)
@@ -83,3 +62,28 @@ const renderAvailableVendors = function(){
 
 
 fetching()
+
+
+const myModal = function(selectedVendor) {
+//modal
+modalDiv = document.createElement('div')
+modalDiv.className = 'modal'
+modalContent = document.createElement('div')
+modalContent.className = 'modal-content'
+
+//displayed in modal
+modalLocation = document.createElement('p')
+modalLocation.innerHTML = selectedVendor.location
+closeModal = document.createElement('span')
+closeModal.className = 'close'
+closeModal.innerHTML = 'X'
+closeModal.addEventListener('click', function(){
+    modalDiv.style.display = 'none'
+})
+
+//appending modal
+vendorDiv.append(modalDiv)
+modalDiv.append(modalContent)
+modalContent.append(modalLocation, closeModal)
+
+}
