@@ -1,3 +1,38 @@
+const price = document.createElement("p");
+const priceField = document.createElement("input");
+price.innerHTML = "Price: ";
+price.append(priceField);
+
+const logo = document.createElement("p");
+const logoField = document.createElement("input");
+logo.innerHTML = "Logo URL (for now lolol): ";
+logo.append(logoField);
+
+const vendorLocation = document.createElement("p");
+const locationField = document.createElement("input");
+vendorLocation.innerHTML = "Location (city and state): ";
+vendorLocation.append(locationField);
+
+const service = document.createElement("p");
+const serviceField = document.createElement("input");
+service.innerHTML = "Service offered: ";
+service.append(serviceField);
+
+const website = document.createElement("p");
+const websiteField = document.createElement("input");
+website.innerHTML = "Website: ";
+website.append(websiteField);
+
+const description = document.createElement("p");
+const descriptionField = document.createElement("input");
+description.innerHTML = "Description: ";
+description.append(descriptionField);
+
+const phone = document.createElement("p");
+const phoneField = document.createElement("input");
+phone.innerHTML = "phone: ";
+phone.append(phoneField);
+
 const vendorFirst = () => {
   contentDiv.innerHTML = "";
   const vendorTitle = document.createElement("h3");
@@ -73,12 +108,13 @@ const saveNewVendor = () => {
       website: websiteField.value,
       logo_img: logoField.value,
       description: descriptionField.value,
-      price: priceField.value
+      price_range: parseInt(priceField.value)
     })
   })
     .then(resp => resp.json())
     .then(user => {
       currentUser = user;
+      console.log(currentUser);
     });
 
   fetching();
