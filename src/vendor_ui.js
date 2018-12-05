@@ -108,7 +108,7 @@ const saveNewVendor = () => {
       website: websiteField.value,
       logo_img: logoField.value,
       description: descriptionField.value,
-      price: priceField.value
+      price_range: parseInt(priceField.value)
     })
   })
     .then(resp => resp.json())
