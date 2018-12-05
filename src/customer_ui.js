@@ -87,8 +87,6 @@ const renderAvailableVendors = function() {
     vendorService.id = "vendor-service";
     vendorInfoButton.id = "vendor-info-button";
     vendorLogo.id = "vendor-logo";
-    vendorLogo.height = 100;
-    vendorLogo.width = 100;
 
     //setting element innerHTML
     vendorName.innerHTML = vendor.name;
@@ -135,13 +133,16 @@ const myModal = function(selectedVendor) {
   modalWebsite.innerHTML = selectedVendor.website;
   modalDescription.innerHTML = selectedVendor.description;
 
+
+  // closing modal
   closeModal = document.createElement("button");
   closeModal.className = "close";
-  closeModal.innerHTML = "X";
+  closeModal.innerHTML = "Close";
   closeModal.addEventListener("click", function() {
     modalDiv.style.display = "none";
   });
 
+  
   //appending modal
   vendorDiv.append(modalDiv);
   modalDiv.append(modalContent);
@@ -153,5 +154,8 @@ const myModal = function(selectedVendor) {
     modalWebsite,
     modalDescription,
     closeModal
+    
+    
   );
 };
+
