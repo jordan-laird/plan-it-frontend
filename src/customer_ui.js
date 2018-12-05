@@ -1,20 +1,20 @@
 let selectedVendor;
 
-const testButton = document.createElement("button")
-testButton.innerHTML = "Photography"
-body.append(testButton)
+const testButton = document.createElement("button");
+testButton.innerHTML = "Photography";
+body.append(testButton);
 let selectedService;
 let filteredVendors;
 
-testButton.addEventListener('click', function(){
-    selectedService = "Photography"
-    renderAvailableVendors()
-})
+testButton.addEventListener("click", function() {
+  selectedService = "Photography";
+  renderAvailableVendors();
+});
 
-const filterButtons = function(){
-    topDiv = document.createElement('div')
-    topDiv.className = "container"
-}
+const filterButtons = function() {
+  topDiv = document.createElement("div");
+  topDiv.className = "container";
+};
 
 const name = document.createElement("p");
 const nameField = document.createElement("input");
@@ -36,10 +36,9 @@ const passwordField = document.createElement("input");
 password.innerHTML = "Password: ";
 password.append(passwordField);
 
-
 //Renders login and register forms and  selects current user
 const customerFirst = () => {
-    selectedVendor = null;
+  selectedVendor = null;
   contentDiv.innerHTML = "";
   const customerTitle = document.createElement("h3");
   const customerLogInButton = document.createElement("button");
@@ -107,17 +106,16 @@ const saveNewCustomer = () => {
 };
 
 const renderAvailableVendors = function() {
-if (selectedService){
-    filteredVendors = filterByService(selectedService)
-}
-else {
-    filteredVendors = vendors
-}
-   console.log(typeof vendors) 
+  if (selectedService) {
+    filteredVendors = filterByService(selectedService);
+  } else {
+    filteredVendors = vendors;
+  }
+  console.log(typeof vendors);
   contentDiv.innerHTML = "";
   const vendorsListedSection = document.createElement("div");
   vendorsListedSection.id = "vendor-section";
-  vendorsListedSection.className = "container"
+  vendorsListedSection.className = "container";
 
   filteredVendors.forEach(function(vendor) {
     //creating elements
@@ -128,7 +126,7 @@ else {
     vendorInfoButton = document.createElement("button");
 
     //setting element properties
-    
+
     vendorDiv.id = "vendor-div";
     vendorName.id = "vendor-name";
     vendorService.id = "vendor-service";
@@ -184,7 +182,6 @@ const myModal = function(selectedVendor) {
   modalDescription.innerHTML = selectedVendor.description;
   modalCreateQuote.innerHTML = "Ask for quote";
 
-
   // closing modal
   closeModal = document.createElement("button");
   closeModal.className = "close";
@@ -193,7 +190,6 @@ const myModal = function(selectedVendor) {
     modalDiv.style.display = "none";
   });
 
-  
   //appending modal
   vendorDiv.append(modalDiv);
   modalDiv.append(modalContent);
@@ -207,8 +203,6 @@ const myModal = function(selectedVendor) {
     modalCreateQuote,
     modalQuoteDiv,
     closeModal
-    
-    
   );
 
   modalCreateQuote.addEventListener("click", function() {
@@ -263,13 +257,40 @@ const createNewQuote = selectedVendor => {
       .then(resp => resp.json())
       .then(quote => {
         console.log(quote);
+        $view = "customerQuote";
+        fetching();
       });
   });
 };
 
-const filterByService = function(selectedService){
-    filteredService = vendors.filter(vendor => vendor.service == selectedService)
-    return filteredService
-}
+const renderMyQuotes = () => {
+  contentDiv.innerHTML = "";
 
+  let myQuotes = quotes.filter(quote => currentUser.id == quote.customer_id);
+  const quotesContainer = document.createElement("div");
+  quotesContainer.className = "container";
+  const quotesRows = document.createElement("div");
+  quotesRows.className = "row";
+  contentDiv.append(quotesContainer);
+  quotesContainer.append(quotesRows);
 
+  myQuotes.forEach(myQuote => {
+    let myQuoteVendor = vendors.filter(
+      vendor => vendor.id == myQuote.vendor_id
+    );
+    console.log(myQuoteVendor);
+    const divQuote = document.createElement("div");
+    divQuote.className = "col-md-3";
+    divQuote.id = "quoteCard";
+    const serviceQuote = document.createElement("p");
+    serviceQuote.innerHTML = myQuoteVendor[0].name;
+    divQuote.append(serviceQuote);
+    quotesRows.append(divQuote);
+    // contentDiv.append(divQuote);
+  });
+};
+
+const filterByService = function(selectedService) {
+  filteredService = vendors.filter(vendor => vendor.service == selectedService);
+  return filteredService;
+};
