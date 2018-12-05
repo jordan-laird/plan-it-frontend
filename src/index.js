@@ -22,11 +22,49 @@ const passwordField = document.createElement("input");
 password.innerHTML = "Password: ";
 password.append(passwordField);
 
+const price = document.createElement("p");
+const priceField = document.createElement("input");
+price.innerHTML = "Price: ";
+price.append(priceField);
+
+const logo = document.createElement("p");
+const logoField = document.createElement("input");
+logo.innerHTML = "Logo URL (for now lolol): ";
+logo.append(logoField);
+
+const vendorLocation = document.createElement("p");
+const locationField = document.createElement("input");
+vendorLocation.innerHTML = "Location (city and state): ";
+vendorLocation.append(locationField);
+
+const service = document.createElement("p");
+const serviceField = document.createElement("input");
+service.innerHTML = "Service offered: ";
+service.append(serviceField);
+
+const website = document.createElement("p");
+const websiteField = document.createElement("input");
+website.innerHTML = "Website: ";
+website.append(websiteField);
+
+const description = document.createElement("p");
+const descriptionField = document.createElement("input");
+description.innerHTML = "Description: ";
+description.append(descriptionField);
+
+const phone = document.createElement("p");
+const phoneField = document.createElement("input");
+phone.innerHTML = "phone: ";
+phone.append(phoneField);
+
 const submitCustomerButton = document.createElement("button");
 submitCustomerButton.innerHTML = "Create account";
 
 const signInButtom = document.createElement("button");
 signInButtom.innerHTML = "Sign In";
+
+const submitVendorButton = document.createElement("button");
+submitVendorButton.innerHTML = "Create account";
 
 const fetching = () => {
   fetch("http://localhost:3000/api/v1/vendors")
@@ -50,61 +88,16 @@ const fetching = () => {
 const render = () => {
   switch ($view) {
     case "customer":
-      contentDiv.innerHTML = "";
-      const customerTitle = document.createElement("h3");
-      const customerLogInButton = document.createElement("button");
-      const customerRegisterButton = document.createElement("button");
-      customerTitle.innerHTML = "customer view";
-      customerRegisterButton.innerHTML = "Register";
-      customerLogInButton.innerHTML = "Log In";
-
-      customerRegisterButton.addEventListener("click", function() {
-        contentDiv.innerHTML = "";
-
-        contentDiv.append(name, email, photo, password, submitCustomerButton);
-      });
-
-      submitCustomerButton.addEventListener("click", function() {
-        saveNewUser();
-        $view = "";
-
-        nameField.value = "";
-        emailField.value = "";
-        photoField.value = "";
-      });
-
-      customerLogInButton.addEventListener("click", function() {
-        contentDiv.innerHTML = "";
-        contentDiv.append(email, password, signInButtom);
-      });
-
-      signInButtom.addEventListener("click", function() {
-        currentUser = customers.find(function(customer) {
-          return customer.email == emailField.value;
-        });
-        userInterface();
-        console.log(currentUser);
-      });
-
-      contentDiv.append(
-        customerTitle,
-        customerLogInButton,
-        customerRegisterButton
-      );
-      body.append(contentDiv);
+      customerFirst();
       break;
 
     case "vendor":
-      contentDiv.innerHTML = "";
-      const vendorTitle = document.createElement("h3");
-      vendorTitle.innerHTML = "vendor view";
-      contentDiv.append(vendorTitle);
-      body.append(contentDiv);
+      vendorFirst();
       break;
   }
 };
 
-const saveNewUser = () => {
+const saveNewCustomer = () => {
   fetch("http://localhost:3000/api/v1/customers", {
     method: "POST",
     headers: {
@@ -122,13 +115,7 @@ const saveNewUser = () => {
       currentUser = user;
     });
   fetching();
-  userInterface();
-};
-
-const userInterface = () => {
-  contentDiv.innerHTML = "";
-
-  contentDiv.innerHTML = "Jordan's piece here";
+  renderAvailableVendors();
 };
 
 fetching();
