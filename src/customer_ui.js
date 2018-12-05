@@ -1,7 +1,23 @@
 let selectedVendor;
+const testButton = document.createElement("button")
+testButton.innerHTML = "Photography"
+body.append(testButton)
+let selectedService;
+let filteredVendors;
+
+testButton.addEventListener('click', function(){
+    selectedService = "Photography"
+    renderAvailableVendors()
+})
+
+const filterButtons = function(){
+    topDiv = document.createElement('div')
+    topDiv.className = "container"
+}
 
 //Renders login and register forms and  selects current user
 const customerFirst = () => {
+    selectedVendor = null;
   contentDiv.innerHTML = "";
   const customerTitle = document.createElement("h3");
   const customerLogInButton = document.createElement("button");
@@ -69,11 +85,19 @@ const saveNewCustomer = () => {
 };
 
 const renderAvailableVendors = function() {
-  body.innerHTML = "";
+if (selectedService){
+    filteredVendors = filterByService(selectedService)
+}
+else {
+    filteredVendors = vendors
+}
+   console.log(typeof vendors) 
+  contentDiv.innerHTML = "";
   const vendorsListedSection = document.createElement("div");
   vendorsListedSection.id = "vendor-section";
+  vendorsListedSection.className = "container"
 
-  vendors.forEach(function(vendor) {
+  filteredVendors.forEach(function(vendor) {
     //creating elements
     vendorDiv = document.createElement("div");
     vendorName = document.createElement("h2");
@@ -82,6 +106,7 @@ const renderAvailableVendors = function() {
     vendorInfoButton = document.createElement("button");
 
     //setting element properties
+    
     vendorDiv.id = "vendor-div";
     vendorName.id = "vendor-name";
     vendorService.id = "vendor-service";
@@ -101,7 +126,7 @@ const renderAvailableVendors = function() {
     });
 
     //appending
-    body.append(vendorsListedSection);
+    contentDiv.append(vendorsListedSection);
     vendorsListedSection.append(vendorDiv);
     vendorDiv.append(vendorName);
     vendorDiv.append(vendorService);
@@ -158,4 +183,10 @@ const myModal = function(selectedVendor) {
     
   );
 };
+
+const filterByService = function(selectedService){
+    filteredService = vendors.filter(vendor => vendor.service == selectedService)
+    return filteredService
+}
+
 

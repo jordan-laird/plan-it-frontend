@@ -1,3 +1,7 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
 #vendor-logo{
     height: 100px;
     width: 100px;
