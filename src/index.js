@@ -1,7 +1,6 @@
 let vendors;
 let customers;
 let currentUser;
-
 const name = document.createElement("p");
 const nameField = document.createElement("input");
 name.innerHTML = "Name: ";
@@ -86,6 +85,7 @@ const fetching = () => {
 };
 
 const render = () => {
+  if ($view) currentUser = null;
   switch ($view) {
     case "customer":
       customerFirst();
@@ -95,27 +95,6 @@ const render = () => {
       vendorFirst();
       break;
   }
-};
-
-const saveNewCustomer = () => {
-  fetch("http://localhost:3000/api/v1/customers", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
-    body: JSON.stringify({
-      name: nameField.value,
-      email: emailField.value,
-      img_url: photoField.value
-    })
-  })
-    .then(resp => resp.json())
-    .then(user => {
-      currentUser = user;
-    });
-  fetching();
-  renderAvailableVendors();
 };
 
 fetching();

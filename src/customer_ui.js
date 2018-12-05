@@ -1,4 +1,5 @@
 let selectedVendor;
+
 //Renders login and register forms and  selects current user
 const customerFirst = () => {
   contentDiv.innerHTML = "";
@@ -33,12 +34,38 @@ const customerFirst = () => {
     currentUser = customers.find(function(customer) {
       return customer.email == emailField.value;
     });
-    renderAvailableVendors();
-    console.log(currentUser);
+    if (currentUser) {
+      renderAvailableVendors();
+      console.log(currentUser);
+    } else {
+      alert("Couldn't find this user");
+    }
   });
 
   contentDiv.append(customerTitle, customerLogInButton, customerRegisterButton);
   body.append(contentDiv);
+};
+
+const saveNewCustomer = () => {
+  fetch("http://localhost:3000/api/v1/customers", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      name: nameField.value,
+      email: emailField.value,
+      img_url: photoField.value
+    })
+  })
+    .then(resp => resp.json())
+    .then(user => {
+      currentUser = user;
+      console.log(currentUser);
+    });
+  fetching();
+  renderAvailableVendors();
 };
 
 const renderAvailableVendors = function() {

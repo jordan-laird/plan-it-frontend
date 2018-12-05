@@ -3,6 +3,7 @@ const vendorFirst = () => {
   const vendorTitle = document.createElement("h3");
   const vendorLogInButton = document.createElement("button");
   const vendorRegisterButton = document.createElement("button");
+
   vendorTitle.innerHTML = "vendor view";
   vendorRegisterButton.innerHTML = "Register";
   vendorLogInButton.innerHTML = "Log In";
@@ -39,8 +40,12 @@ const vendorFirst = () => {
     currentUser = vendors.find(function(vendor) {
       return vendor.email == emailField.value;
     });
-    renderVendorsInterface();
-    console.log(currentUser);
+    if (currentUser) {
+      renderVendorsInterface();
+      console.log(currentUser);
+    } else {
+      alert("Couldn't find user");
+    }
   });
 
   contentDiv.append(vendorTitle, vendorLogInButton, vendorRegisterButton);
@@ -75,6 +80,7 @@ const saveNewVendor = () => {
     .then(user => {
       currentUser = user;
     });
+
   fetching();
   renderVendorsInterface();
 };
