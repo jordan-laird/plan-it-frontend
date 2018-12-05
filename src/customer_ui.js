@@ -1,4 +1,23 @@
-let selectedVendor;
+// let selectedVendor;
+const name = document.createElement("p");
+const nameField = document.createElement("input");
+name.innerHTML = "Name: ";
+name.append(nameField);
+
+const email = document.createElement("p");
+const emailField = document.createElement("input");
+email.innerHTML = "E-mail: ";
+email.append(emailField);
+
+const photo = document.createElement("p");
+const photoField = document.createElement("input");
+photo.innerHTML = "Photo URL (for now lolol): ";
+photo.append(photoField);
+
+const password = document.createElement("p");
+const passwordField = document.createElement("input");
+password.innerHTML = "Password: ";
+password.append(passwordField);
 
 //Renders login and register forms and  selects current user
 const customerFirst = () => {
