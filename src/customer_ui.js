@@ -1,4 +1,21 @@
 let selectedVendor;
+
+const testButton = document.createElement("button")
+testButton.innerHTML = "Photography"
+body.append(testButton)
+let selectedService;
+let filteredVendors;
+
+testButton.addEventListener('click', function(){
+    selectedService = "Photography"
+    renderAvailableVendors()
+})
+
+const filterButtons = function(){
+    topDiv = document.createElement('div')
+    topDiv.className = "container"
+}
+
 const name = document.createElement("p");
 const nameField = document.createElement("input");
 name.innerHTML = "Name: ";
@@ -19,8 +36,10 @@ const passwordField = document.createElement("input");
 password.innerHTML = "Password: ";
 password.append(passwordField);
 
+
 //Renders login and register forms and  selects current user
 const customerFirst = () => {
+    selectedVendor = null;
   contentDiv.innerHTML = "";
   const customerTitle = document.createElement("h3");
   const customerLogInButton = document.createElement("button");
@@ -88,11 +107,19 @@ const saveNewCustomer = () => {
 };
 
 const renderAvailableVendors = function() {
-  body.innerHTML = "";
+if (selectedService){
+    filteredVendors = filterByService(selectedService)
+}
+else {
+    filteredVendors = vendors
+}
+   console.log(typeof vendors) 
+  contentDiv.innerHTML = "";
   const vendorsListedSection = document.createElement("div");
   vendorsListedSection.id = "vendor-section";
+  vendorsListedSection.className = "container"
 
-  vendors.forEach(function(vendor) {
+  filteredVendors.forEach(function(vendor) {
     //creating elements
     vendorDiv = document.createElement("div");
     vendorName = document.createElement("h2");
@@ -101,13 +128,12 @@ const renderAvailableVendors = function() {
     vendorInfoButton = document.createElement("button");
 
     //setting element properties
+    
     vendorDiv.id = "vendor-div";
     vendorName.id = "vendor-name";
     vendorService.id = "vendor-service";
     vendorInfoButton.id = "vendor-info-button";
     vendorLogo.id = "vendor-logo";
-    vendorLogo.height = 100;
-    vendorLogo.width = 100;
 
     //setting element innerHTML
     vendorName.innerHTML = vendor.name;
@@ -122,7 +148,7 @@ const renderAvailableVendors = function() {
     });
 
     //appending
-    body.append(vendorsListedSection);
+    contentDiv.append(vendorsListedSection);
     vendorsListedSection.append(vendorDiv);
     vendorDiv.append(vendorName);
     vendorDiv.append(vendorService);
@@ -158,13 +184,16 @@ const myModal = function(selectedVendor) {
   modalDescription.innerHTML = selectedVendor.description;
   modalCreateQuote.innerHTML = "Ask for quote";
 
+
+  // closing modal
   closeModal = document.createElement("button");
   closeModal.className = "close";
-  closeModal.innerHTML = "X";
+  closeModal.innerHTML = "Close";
   closeModal.addEventListener("click", function() {
     modalDiv.style.display = "none";
   });
 
+  
   //appending modal
   vendorDiv.append(modalDiv);
   modalDiv.append(modalContent);
@@ -178,6 +207,8 @@ const myModal = function(selectedVendor) {
     modalCreateQuote,
     modalQuoteDiv,
     closeModal
+    
+    
   );
 
   modalCreateQuote.addEventListener("click", function() {
@@ -235,3 +266,10 @@ const createNewQuote = selectedVendor => {
       });
   });
 };
+
+const filterByService = function(selectedService){
+    filteredService = vendors.filter(vendor => vendor.service == selectedService)
+    return filteredService
+}
+
+
