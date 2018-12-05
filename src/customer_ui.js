@@ -1,4 +1,4 @@
-// let selectedVendor;
+let selectedVendor;
 const name = document.createElement("p");
 const nameField = document.createElement("input");
 name.innerHTML = "Name: ";
@@ -147,12 +147,16 @@ const myModal = function(selectedVendor) {
   modalPhone = document.createElement("p");
   modalWebsite = document.createElement("p");
   modalDescription = document.createElement("p");
+  modalQuoteDiv = document.createElement("div");
+  modalCreateQuote = document.createElement("h3");
+
   modalName.innerHTML = selectedVendor.name;
   modalService.innerHTML = selectedVendor.service;
   modalLocation.innerHTML = selectedVendor.location;
   modalPhone.innerHTML = selectedVendor.phone;
   modalWebsite.innerHTML = selectedVendor.website;
   modalDescription.innerHTML = selectedVendor.description;
+  modalCreateQuote.innerHTML = "Ask for quote";
 
   closeModal = document.createElement("button");
   closeModal.className = "close";
@@ -171,6 +175,63 @@ const myModal = function(selectedVendor) {
     modalPhone,
     modalWebsite,
     modalDescription,
+    modalCreateQuote,
+    modalQuoteDiv,
     closeModal
   );
+
+  modalCreateQuote.addEventListener("click", function() {
+    modalQuoteDiv.innerHTML = "";
+    // modalQuoteDiv.append("create quote here");
+    createNewQuote(selectedVendor);
+  });
+};
+
+const createNewQuote = selectedVendor => {
+  const eventDate = document.createElement("p");
+  eventDate.innerHTML = "Event date";
+  const eventDateInput = document.createElement("input");
+  eventDate.append(eventDateInput);
+
+  const guestCount = document.createElement("p");
+  guestCount.innerHTML = "How many guests?";
+  const guestCountInput = document.createElement("input");
+  guestCount.append(guestCountInput);
+
+  const budget = document.createElement("p");
+  budget.innerHTML = "What's your budget?";
+  const budgetInput = document.createElement("input");
+  budget.append(budgetInput);
+
+  const comments = document.createElement("p");
+  comments.innerHTML = `Leave a message to ${selectedVendor.name}: <br>`;
+  const commentsInput = document.createElement("textarea");
+  comments.append(commentsInput);
+
+  const submitQuote = document.createElement("button");
+  submitQuote.innerHTML = "Submit";
+
+  modalQuoteDiv.append(eventDate, guestCount, budget, comments, submitQuote);
+
+  submitQuote.addEventListener("click", function() {
+    fetch("http://localhost:3000/api/v1/quotes/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        vendor_id: selectedVendor.id,
+        customer_id: currentUser.id,
+        guestCount: guestCountInput.value,
+        eventDate: new Date(eventDateInput.value),
+        comments: commentsInput.value,
+        budget: parseInt(budgetInput.value)
+      })
+    })
+      .then(resp => resp.json())
+      .then(quote => {
+        console.log(quote);
+      });
+  });
 };
