@@ -1,7 +1,12 @@
-.container{
+#filter-img {
+    width: 5%;
+    height: 5%;
+}
+
+/* .container{
     display: flex;
     flex-direction: column;
-}
+} */
 #vendor-logo{
     height: 100px;
     width: 100px;
