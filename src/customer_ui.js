@@ -1,20 +1,79 @@
 let selectedVendor;
+let topDiv = document.createElement('div')
+let rowDiv = document.createElement('div')
+let homeImg = document.createElement('img')
+let photographyImg = document.createElement('img')
+let cateringImg = document.createElement('img')
+let venuesImg = document.createElement('img')
+let entertainmentImg = document.createElement('img')
+let staffingImg = document.createElement('img')
+let decorationImg = document.createElement('img')
 
-const testButton = document.createElement("button")
-testButton.innerHTML = "Photography"
-body.append(testButton)
+
 let selectedService;
 let filteredVendors;
 
-testButton.addEventListener('click', function(){
+const filterButtons = function () {
+  //set properties
+  topDiv.className = "container"
+  rowDiv.className = "row"
+  homeImg.className= "col-md-1"
+  homeImg.id = "filter-img"
+  homeImg.src = "images/home.png"
+  photographyImg.className= "col-md-1"
+  photographyImg.id = "filter-img"
+  photographyImg.src = "images/photo-camera.png"
+  cateringImg.className= "col-md-1"
+  cateringImg.id = "filter-img"
+  cateringImg.src = "images/buffet.png"
+  venuesImg.className= "col-md-1"
+  venuesImg.id = "filter-img" 
+  venuesImg.src = "images/placeholder.png" 
+  staffingImg.className= "col-md-1"
+  staffingImg.id = "filter-img"
+  staffingImg.src = "images/staff.png"
+  decorationImg.className= "col-md-1"
+  decorationImg.id = "filter-img" 
+  decorationImg.src = "images/floating-balloons.png"
+  entertainmentImg.className = "col-md-1"
+  entertainmentImg.id = "filter-img"
+  entertainmentImg.src = "images/drummer-set.png"
+
+
+  navDiv.append(topDiv)
+  topDiv.append(rowDiv)
+  rowDiv.append(homeImg, photographyImg, cateringImg, venuesImg, entertainmentImg, staffingImg, decorationImg)
+
+}
+
+homeImg.addEventListener('click', function(){
+    selectedService = null
+    renderAvailableVendors()
+})
+photographyImg.addEventListener('click', function(){
     selectedService = "Photography"
     renderAvailableVendors()
 })
-
-const filterButtons = function(){
-    topDiv = document.createElement('div')
-    topDiv.className = "container"
-}
+cateringImg.addEventListener('click', function(){
+    selectedService = "Catering"
+    renderAvailableVendors()
+})
+venuesImg.addEventListener('click', function(){
+    selectedService = "Venues"
+    renderAvailableVendors()
+})
+staffingImg.addEventListener('click', function(){
+    selectedService = "Staffing"
+    renderAvailableVendors()
+})
+decorationImg.addEventListener('click', function(){
+    selectedService = "Decoration"
+    renderAvailableVendors()
+})
+entertainmentImg.addEventListener('click', function(){
+    selectedService = "Photography"
+    renderAvailableVendors()
+})
 
 const name = document.createElement("p");
 const nameField = document.createElement("input");
@@ -73,6 +132,7 @@ const customerFirst = () => {
       return customer.email == emailField.value;
     });
     if (currentUser) {
+      filterButtons();
       renderAvailableVendors();
       console.log(currentUser);
     } else {
@@ -107,6 +167,7 @@ const saveNewCustomer = () => {
 };
 
 const renderAvailableVendors = function() {
+  filterButtons();
 if (selectedService){
     filteredVendors = filterByService(selectedService)
 }

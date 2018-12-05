@@ -5,6 +5,7 @@ const title = document.createElement("h1");
 title.innerHTML = "PlanIt";
 body.append(title);
 
+const navDiv = document.createElement('div')
 const contentDiv = document.createElement("div");
 const logInText = document.createElement("h3");
 const customerButton = document.createElement("button");
@@ -26,4 +27,5 @@ vendorButton.addEventListener("click", function() {
 contentDiv.append(logInText);
 contentDiv.append(customerButton);
 contentDiv.append(vendorButton);
+body.append(navDiv)
 body.append(contentDiv);
