@@ -1,13 +1,15 @@
 let $view;
 const title = document.createElement("h1");
-title.className = "col-xs-12 mx-auto"
+title.className = "col-xs-12 mx-auto";
 
 title.innerHTML = "PlanIt";
 body.append(title);
 
-const navDiv = document.createElement('div')
+const navDiv = document.createElement("div");
 const contentDiv = document.createElement("div");
-contentDiv.className = "col-xs-12 mx-auto"
+contentDiv.className = "col-xs-12 mx-auto";
+const firstPage = document.createElement("div");
+firstPage.id = "first-page";
 const logInText = document.createElement("h3");
 const customerButton = document.createElement("button");
 const vendorButton = document.createElement("button");
@@ -25,8 +27,9 @@ vendorButton.addEventListener("click", function() {
   fetching();
 });
 
-contentDiv.append(logInText);
-contentDiv.append(customerButton);
-contentDiv.append(vendorButton);
-body.append(navDiv)
+firstPage.append(logInText);
+firstPage.append(customerButton);
+firstPage.append(vendorButton);
+body.append(navDiv);
+contentDiv.append(firstPage);
 body.append(contentDiv);

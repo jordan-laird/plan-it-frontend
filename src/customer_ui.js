@@ -89,7 +89,6 @@ const saveNewCustomer = () => {
     });
   fetching();
   renderAvailableVendors();
-  
 };
 
 const renderAvailableVendors = function() {
@@ -103,7 +102,6 @@ const renderAvailableVendors = function() {
   } else {
     filteredVendors = vendors;
   }
-  
 
   contentDiv.innerHTML = "";
   const vendorsListedSection = document.createElement("div");
@@ -162,7 +160,7 @@ const myModal = function(selectedVendor) {
   //displayed in modal
   modalName = document.createElement("h3");
   modalService = document.createElement("h4");
-  modalLocation= document.createElement("h4");
+  modalLocation = document.createElement("h4");
   modalPhone = document.createElement("p");
   modalWebsite = document.createElement("p");
   modalDescription = document.createElement("p");
@@ -171,7 +169,7 @@ const myModal = function(selectedVendor) {
 
   modalName.innerHTML = selectedVendor.name;
   modalService.innerHTML = selectedVendor.service;
-  modalLocation.innerHTML = `${selectedVendor.city}, ${selectedVendor.state}`
+  modalLocation.innerHTML = `${selectedVendor.city}, ${selectedVendor.state}`;
   modalPhone.innerHTML = selectedVendor.phone;
   modalWebsite.innerHTML = selectedVendor.website;
   modalDescription.innerHTML = selectedVendor.description;
@@ -320,10 +318,62 @@ const renderMyQuotes = () => {
     denyButton.innerHTML = "Deny offer";
     denyButton.id = "deny-button";
 
-    if (myQuote.response) {
+    if (myQuote.status == "responded") {
       divQuote.append(responseQuote, acceptButton, denyButton);
     }
+
+    acceptButton.addEventListener("click", function() {
+      console.log(myQuote);
+      updatequote(myQuote, "accept");
+    });
+
+    denyButton.addEventListener("click", function() {
+      updatequote(myQuote, "deny");
+    });
+
     quotesRows.append(divQuote);
     // contentDiv.append(divQuote);
   });
+};
+
+const updatequote = (selectedQuote, action) => {
+  switch (action) {
+    case "accept":
+      fetch(`http://localhost:3000/api/v1/quotes/${selectedQuote.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          status: "accepted"
+        })
+      })
+        .then(resp => resp.json())
+        .then(quote => {
+          $view = "customerQuote";
+          fetching();
+          console.log(quote);
+        });
+      break;
+
+    case "deny":
+      fetch(`http://localhost:3000/api/v1/quotes/${selectedQuote.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          status: "denied"
+        })
+      })
+        .then(resp => resp.json())
+        .then(quote => {
+          $view = "customerQuote";
+          fetching();
+          console.log(quote);
+        });
+      break;
+  }
 };

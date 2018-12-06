@@ -1,28 +1,26 @@
-
 #filter-img {
-    width: 10%;
-    height: 10%;
-    margin-top: 25px;
-    margin-bottom: 50px;
+  width: 10%;
+  height: 10%;
+  margin-top: 25px;
+  margin-bottom: 50px;
 }
 
 #filter-img:hover,
 #filter-img:focus {
-    background-color: gray
+  background-color: gray;
 }
 
 /* .container{
     display: flex;
     flex-direction: column;
 } */
-#vendor-logo{
-    height: 100px;
-    width: 100px;
-
+#vendor-logo {
+  height: 100px;
+  width: 100px;
 }
 
-#vendor-div{
-  text-align:center;
+#vendor-div {
+  text-align: center;
   padding-top: 25px;
   padding-bottom: 25px;
   border: 1px solid #888;
@@ -77,4 +75,8 @@ h1 {
   border: 1px solid #888;
   margin: 15px;
   padding: 10px;
+}
+
+#first-page {
+  text-align: center;
 }

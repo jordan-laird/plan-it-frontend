@@ -387,12 +387,21 @@ const renderVendorQuotes = () => {
     const commentsQuote = document.createElement("p");
     commentsQuote.innerHTML = `Comments: ${vendorQuote.comments}`;
 
+    const statusQuote = document.createElement("p");
+    statusQuote.innerHTML = `Status: ${vendorQuote.status}`;
+
     const myResponse = document.createElement("textarea");
     myResponse.placeholder = "Make an offer!";
     const submitResponse = document.createElement("button");
     submitResponse.innerHTML = "Submit";
 
-    divQuote.append(budgetQuote, guestQuote, dateQuote, commentsQuote);
+    divQuote.append(
+      budgetQuote,
+      guestQuote,
+      dateQuote,
+      commentsQuote,
+      statusQuote
+    );
 
     if (vendorQuote.status == "pending") {
       divQuote.append(myResponse, submitResponse);
@@ -418,9 +427,10 @@ const renderVendorQuotes = () => {
       })
         .then(resp => resp.json())
         .then(quote => {
-          vendorQuote = quote;
           console.log(quote);
-          console.log(myResponse.value);
+          vendorQuote = quote;
+          $view = "vendorQuote";
+          fetching();
         });
     };
   });
