@@ -1,11 +1,13 @@
 let $view;
 const title = document.createElement("h1");
+title.className = "col-xs-12 mx-auto"
 
 title.innerHTML = "PlanIt";
 body.append(title);
 
 const navDiv = document.createElement('div')
 const contentDiv = document.createElement("div");
+contentDiv.className = "col-xs-12 mx-auto"
 const logInText = document.createElement("h3");
 const customerButton = document.createElement("button");
 const vendorButton = document.createElement("button");

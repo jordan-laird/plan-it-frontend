@@ -2,7 +2,7 @@ let quotes;
 let vendors;
 let customers;
 let currentUser;
-const body = document.querySelector("body");
+const body = document.querySelector("#body-row");
 const submitCustomerButton = document.createElement("button");
 submitCustomerButton.innerHTML = "Create account";
 
@@ -56,3 +56,4 @@ const render = () => {
 };
 
 fetching();
+
