@@ -1,78 +1,85 @@
 let selectedVendor;
-let topDiv = document.createElement('div')
-let rowDiv = document.createElement('div')
-let homeImg = document.createElement('img')
-let photographyImg = document.createElement('img')
-let cateringImg = document.createElement('img')
-let venuesImg = document.createElement('img')
-let entertainmentImg = document.createElement('img')
-let staffingImg = document.createElement('img')
-let decorationImg = document.createElement('img')
+let topDiv = document.createElement("div");
+let rowDiv = document.createElement("div");
+let homeImg = document.createElement("img");
+let photographyImg = document.createElement("img");
+let cateringImg = document.createElement("img");
+let venuesImg = document.createElement("img");
+let entertainmentImg = document.createElement("img");
+let staffingImg = document.createElement("img");
+let decorationImg = document.createElement("img");
 
 let selectedService;
 let filteredVendors;
 
-const filterButtons = function () {
+const filterButtons = function() {
   //set properties
-  topDiv.className = "container"
-  rowDiv.className = "row"
-  homeImg.className= "col-md-1"
-  homeImg.id = "filter-img"
-  homeImg.src = "images/home.png"
-  photographyImg.className= "col-md-1"
-  photographyImg.id = "filter-img"
-  photographyImg.src = "images/photo-camera.png"
-  cateringImg.className= "col-md-1"
-  cateringImg.id = "filter-img"
-  cateringImg.src = "images/buffet.png"
-  venuesImg.className= "col-md-1"
-  venuesImg.id = "filter-img" 
-  venuesImg.src = "images/placeholder.png" 
-  staffingImg.className= "col-md-1"
-  staffingImg.id = "filter-img"
-  staffingImg.src = "images/staff.png"
-  decorationImg.className= "col-md-1"
-  decorationImg.id = "filter-img" 
-  decorationImg.src = "images/floating-balloons.png"
-  entertainmentImg.className = "col-md-1"
-  entertainmentImg.id = "filter-img"
-  entertainmentImg.src = "images/drummer-set.png"
+  topDiv.className = "container";
+  rowDiv.className = "row";
+  homeImg.className = "col-md-1";
+  homeImg.id = "filter-img";
+  homeImg.src = "images/home.png";
+  photographyImg.className = "col-md-1";
+  photographyImg.id = "filter-img";
+  photographyImg.src = "images/photo-camera.png";
+  cateringImg.className = "col-md-1";
+  cateringImg.id = "filter-img";
+  cateringImg.src = "images/buffet.png";
+  venuesImg.className = "col-md-1";
+  venuesImg.id = "filter-img";
+  venuesImg.src = "images/placeholder.png";
+  staffingImg.className = "col-md-1";
+  staffingImg.id = "filter-img";
+  staffingImg.src = "images/staff.png";
+  decorationImg.className = "col-md-1";
+  decorationImg.id = "filter-img";
+  decorationImg.src = "images/floating-balloons.png";
+  entertainmentImg.className = "col-md-1";
+  entertainmentImg.id = "filter-img";
+  entertainmentImg.src = "images/drummer-set.png";
 
+  navDiv.append(topDiv);
+  topDiv.append(rowDiv);
+  rowDiv.append(
+    homeImg,
+    photographyImg,
+    cateringImg,
+    venuesImg,
+    entertainmentImg,
+    staffingImg,
+    decorationImg
+  );
+};
 
-  navDiv.append(topDiv)
-  topDiv.append(rowDiv)
-  rowDiv.append(homeImg, photographyImg, cateringImg, venuesImg, entertainmentImg, staffingImg, decorationImg)
+homeImg.addEventListener("click", function() {
+  selectedService = null;
+  renderAvailableVendors();
+});
+photographyImg.addEventListener("click", function() {
+  selectedService = "Photography";
+  renderAvailableVendors();
+});
+cateringImg.addEventListener("click", function() {
+  selectedService = "Catering";
+  renderAvailableVendors();
+});
+venuesImg.addEventListener("click", function() {
+  selectedService = "Venues";
+  renderAvailableVendors();
+});
+staffingImg.addEventListener("click", function() {
+  selectedService = "Staffing";
+  renderAvailableVendors();
+});
+decorationImg.addEventListener("click", function() {
+  selectedService = "Decoration";
+  renderAvailableVendors();
+});
+entertainmentImg.addEventListener("click", function() {
+  selectedService = "Photography";
+  renderAvailableVendors();
+});
 
-}
-
-homeImg.addEventListener('click', function(){
-    selectedService = null
-    renderAvailableVendors()
-})
-photographyImg.addEventListener('click', function(){
-    selectedService = "Photography"
-    renderAvailableVendors()
-})
-cateringImg.addEventListener('click', function(){
-    selectedService = "Catering"
-    renderAvailableVendors()
-})
-venuesImg.addEventListener('click', function(){
-    selectedService = "Venues"
-    renderAvailableVendors()
-})
-staffingImg.addEventListener('click', function(){
-    selectedService = "Staffing"
-    renderAvailableVendors()
-})
-decorationImg.addEventListener('click', function(){
-    selectedService = "Decoration"
-    renderAvailableVendors()
-})
-entertainmentImg.addEventListener('click', function(){
-    selectedService = "Photography"
-    renderAvailableVendors()
-})
 const name = document.createElement("p");
 const nameField = document.createElement("input");
 name.innerHTML = "Name: ";
@@ -90,10 +97,11 @@ photo.append(photoField);
 
 const password = document.createElement("p");
 const passwordField = document.createElement("input");
+passwordField.type = "password";
 password.innerHTML = "Password: ";
 password.append(passwordField);
 
-//Renders login and register forms and  selects current user
+//Renders forms and selects current user
 const customerFirst = () => {
   selectedVendor = null;
   contentDiv.innerHTML = "";
@@ -165,13 +173,12 @@ const saveNewCustomer = () => {
 
 const renderAvailableVendors = function() {
   filterButtons();
-if (selectedService){
-    filteredVendors = filterByService(selectedService)
-}
-else {
-    filteredVendors = vendors
-}
-   console.log(typeof vendors) 
+  if (selectedService) {
+    filteredVendors = filterByService(selectedService);
+  } else {
+    filteredVendors = vendors;
+  }
+  console.log(typeof vendors);
 
   contentDiv.innerHTML = "";
   const vendorsListedSection = document.createElement("div");
@@ -310,7 +317,7 @@ const createNewQuote = selectedVendor => {
         vendor_id: selectedVendor.id,
         customer_id: currentUser.id,
         guestCount: guestCountInput.value,
-        eventDate: new Date(eventDateInput.value),
+        event_date: eventDateInput.value,
         comments: commentsInput.value,
         budget: parseInt(budgetInput.value)
       })
@@ -326,7 +333,7 @@ const createNewQuote = selectedVendor => {
 
 const renderMyQuotes = () => {
   contentDiv.innerHTML = "";
-
+  contentDiv.innerHTML = "<h1> My quotes </h1>";
   let myQuotes = quotes.filter(quote => currentUser.id == quote.customer_id);
   const quotesContainer = document.createElement("div");
   quotesContainer.className = "container";
@@ -339,13 +346,38 @@ const renderMyQuotes = () => {
     let myQuoteVendor = vendors.filter(
       vendor => vendor.id == myQuote.vendor_id
     );
-    console.log(myQuoteVendor);
+
     const divQuote = document.createElement("div");
     divQuote.className = "col-md-3";
     divQuote.id = "quoteCard";
-    const serviceQuote = document.createElement("p");
-    serviceQuote.innerHTML = myQuoteVendor[0].name;
+
+    const nameQuote = document.createElement("h3");
+    nameQuote.innerHTML = myQuoteVendor[0].name;
+    divQuote.append(nameQuote);
+
+    const serviceQuote = document.createElement("h4");
+    serviceQuote.innerHTML = `${myQuoteVendor[0].service} ${
+      myQuoteVendor[0].price_range
+    }`;
     divQuote.append(serviceQuote);
+
+    const imageQuote = document.createElement("img");
+    imageQuote.id = "vendor-logo";
+    imageQuote.src = myQuoteVendor[0].logo_img;
+    divQuote.append(imageQuote);
+
+    const dateQuote = document.createElement("p");
+    dateQuote.innerHTML = `My event date: ${myQuote.event_date}`;
+    divQuote.append(dateQuote);
+
+    const guestQuote = document.createElement("p");
+    guestQuote.innerHTML = `Estimated guests: ${myQuote.guestCount}`;
+    divQuote.append(guestQuote);
+
+    const messageQuote = document.createElement("p");
+    messageQuote.innerHTML = `Message sent: ${myQuote.comments}`;
+    divQuote.append(messageQuote);
+
     quotesRows.append(divQuote);
     // contentDiv.append(divQuote);
   });
