@@ -109,8 +109,10 @@ const renderAvailableVendors = function() {
   filteredVendors.forEach(function(vendor) {
     //creating elements
     vendorDiv = document.createElement("div");
-    vendorName = document.createElement("h2");
-    vendorService = document.createElement("h3");
+    vendorDiv.id = "vendor-div"
+    vendorDiv.className = "col-xs-12 mx-auto"
+    vendorName = document.createElement("h3");
+    vendorService = document.createElement("h4");
     vendorLogo = document.createElement("img");
     vendorInfoButton = document.createElement("button");
 
@@ -304,7 +306,4 @@ const renderMyQuotes = () => {
   });
 };
 
-const filterByService = function(selectedService) {
-  filteredService = vendors.filter(vendor => vendor.service == selectedService);
-  return filteredService;
-};
+
