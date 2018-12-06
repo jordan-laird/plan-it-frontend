@@ -12,68 +12,7 @@ let decorationImg = document.createElement("img");
 let selectedService;
 let filteredVendors;
 
-const filterButtons = function() {
-  //set properties
-  topDiv.className = "container"
-  rowDiv.className = "row"
-  homeImg.className= "col-md-1"
-  homeImg.id = "filter-img"
-  homeImg.src = "images/home.png"
-  photographyImg.className= "col-md-1"
-  photographyImg.id = "filter-img"
-  photographyImg.src = "images/photo-camera.png"
-  cateringImg.className= "col-md-1"
-  cateringImg.id = "filter-img"
-  cateringImg.src = "images/buffet.png"
-  venuesImg.className= "col-md-1"
-  venuesImg.id = "filter-img" 
-  venuesImg.src = "images/placeholder.png" 
-  staffingImg.className= "col-md-1"
-  staffingImg.id = "filter-img"
-  staffingImg.src = "images/staff.png"
-  decorationImg.className= "col-md-1"
-  decorationImg.id = "filter-img" 
-  decorationImg.src = "images/floating-balloons.png"
-  entertainmentImg.className = "col-md-1"
-  entertainmentImg.id = "filter-img"
-  entertainmentImg.src = "images/drummer-set.png"
-
-
-  navDiv.append(topDiv)
-  topDiv.append(rowDiv)
-  rowDiv.append(homeImg, photographyImg, cateringImg, venuesImg, entertainmentImg, staffingImg, decorationImg)
-
-}
-
-homeImg.addEventListener('click', function(){
-    selectedService = null
-    renderAvailableVendors()
-})
-photographyImg.addEventListener('click', function(){
-    selectedService = "Photography"
-    renderAvailableVendors()
-})
-cateringImg.addEventListener('click', function(){
-    selectedService = "Catering"
-    renderAvailableVendors()
-})
-venuesImg.addEventListener('click', function(){
-    selectedService = "Venues"
-    renderAvailableVendors()
-})
-staffingImg.addEventListener('click', function(){
-    selectedService = "Staffing"
-    renderAvailableVendors()
-})
-decorationImg.addEventListener('click', function(){
-    selectedService = "Decoration"
-    renderAvailableVendors()
-})
-entertainmentImg.addEventListener('click', function(){
-    selectedService = "Entertainment"
-    renderAvailableVendors()
-})
-=======
+//=======
   topDiv.className = "container";
   rowDiv.className = "row";
   homeImg.className = "col-md-1";
@@ -109,7 +48,7 @@ entertainmentImg.addEventListener('click', function(){
     staffingImg,
     decorationImg
   );
-};
+
 
 homeImg.addEventListener("click", function() {
   selectedService = null;
