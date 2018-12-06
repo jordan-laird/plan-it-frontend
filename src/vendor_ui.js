@@ -89,7 +89,7 @@ const vendorFirst = () => {
 
 const renderVendorsInterface = () => {
   contentDiv.innerHTML = "";
-  //   contentDiv.append("vendor's interface ");
+
   const name = document.createElement("h3");
   name.innerHTML = `<b>${currentUser.name}</b>`;
   const email = document.createElement("p");
