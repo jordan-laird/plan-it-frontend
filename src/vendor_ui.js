@@ -162,41 +162,39 @@ const vendorFirst = () => {
 
 const vendorNav = document.createElement("div");
 profileImg = document.createElement("img");
-profileImg.src =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZCGyzQCpBWIboSErgUWkpGjp6NnHDRHNukRLST7JZ484gOrrN";
+profileImg.src = "images/user.png";
 profileImg.style = "height: 100px;";
 
 profileImg.className = "col-xs-3 col-sm-1";
 profileImg.id = "filter-img";
 
 const editProfileImg = document.createElement("img");
-editProfileImg.src =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZCGyzQCpBWIboSErgUWkpGjp6NnHDRHNukRLST7JZ484gOrrN";
+editProfileImg.src = "images/edituser.png";
 editProfileImg.style = "height: 100px;";
 editProfileImg.className = "col-xs-3 col-sm-1";
 editProfileImg.id = "filter-img";
 
 const myQuotesImg = document.createElement("img");
-myQuotesImg.src =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZCGyzQCpBWIboSErgUWkpGjp6NnHDRHNukRLST7JZ484gOrrN";
+myQuotesImg.src = "images/receipt.png";
 myQuotesImg.style = "height: 100px;";
 
 myQuotesImg.className = "col-xs-3 col-sm-1";
 myQuotesImg.id = "filter-img";
 
-const myPortfolioImg = document.createElement("img");
-myPortfolioImg.src =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZCGyzQCpBWIboSErgUWkpGjp6NnHDRHNukRLST7JZ484gOrrN";
-myPortfolioImg.style = "height: 100px;";
+//Portfolio case we have time
+// const myPortfolioImg = document.createElement("img");
+// myPortfolioImg.src =
+//   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZCGyzQCpBWIboSErgUWkpGjp6NnHDRHNukRLST7JZ484gOrrN";
+// myPortfolioImg.style = "height: 100px;";
 
-myPortfolioImg.className = "col-xs-3 col-sm-1";
-myPortfolioImg.id = "filter-img";
+// myPortfolioImg.className = "col-xs-3 col-sm-1";
+// myPortfolioImg.id = "filter-img";
 
 const vendorTopDiv = document.createElement("div");
 const vendorRowDiv = document.createElement("div");
 vendorNav.append(vendorTopDiv);
 vendorTopDiv.append(vendorRowDiv);
-vendorRowDiv.append(profileImg, editProfileImg, myQuotesImg, myPortfolioImg);
+vendorRowDiv.append(profileImg, editProfileImg, myQuotesImg);
 
 profileImg.addEventListener("click", function() {
   renderMyVendorProfile();
@@ -237,6 +235,10 @@ editProfileImg.addEventListener("click", function() {
     password,
     editVendorButton
   );
+});
+
+myQuotesImg.addEventListener("click", function() {
+  renderVendorQuotes();
 });
 
 const renderVendorsInterface = () => {
@@ -340,4 +342,53 @@ const editVendor = () => {
   fetching();
   $view = "";
   renderVendorsInterface();
+};
+
+const renderVendorQuotes = () => {
+  contentDiv.innerHTML = "";
+  contentDiv.append(vendorNav);
+  contentDiv.innerHTML = "<h1> My quotes </h1>";
+
+  let myVendorQuotes = quotes.filter(
+    quote => currentUser.id == quote.vendor_id
+  );
+  console.log(myVendorQuotes);
+  const vendorQuotesContainer = document.createElement("div");
+  vendorQuotesContainer.className = "container";
+  const vendorQuotesRows = document.createElement("div");
+  vendorQuotesRows.className = "row";
+  contentDiv.append(vendorQuotesContainer);
+  vendorQuotesContainer.append(vendorQuotesRows);
+
+  myVendorQuotes.forEach(vendorQuote => {
+    const divQuote = document.createElement("div");
+    divQuote.className = "col-md-3";
+    divQuote.id = "quoteCard";
+
+    let customerRequesting = customers.filter(
+      customer => customer.id == vendorQuote.customer_id
+    );
+
+    const customerQuote = document.createElement("h4");
+    customerQuote.innerHTML = `Requested by ${customerRequesting[0].name}`;
+    divQuote.append(customerQuote);
+
+    const budgetQuote = document.createElement("p");
+    budgetQuote.innerHTML = `Customer's budget: ${vendorQuote.budget}`;
+
+    const guestQuote = document.createElement("p");
+    guestQuote.innerHTML = `Estimated number of guests: ${
+      vendorQuote.guestCount
+    }`;
+
+    const dateQuote = document.createElement("p");
+    dateQuote.innerHTML = `Event's date: ${vendorQuote.event_date}`;
+
+    const commentsQuote = document.createElement("p");
+    commentsQuote.innerHTML = `Comments: ${vendorQuote.comments}`;
+
+    divQuote.append(budgetQuote, guestQuote, dateQuote, commentsQuote);
+
+    vendorQuotesRows.append(divQuote);
+  });
 };
