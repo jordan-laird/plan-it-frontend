@@ -7,7 +7,7 @@ let venuesImg = document.createElement("img");
 let entertainmentImg = document.createElement("img");
 let staffingImg = document.createElement("img");
 let decorationImg = document.createElement("img");
-
+let myQuotesImg = document.createElement("img");
 let selectedService;
 let filteredVendors;
 
@@ -15,27 +15,31 @@ let filteredVendors;
 const filterButtons = function () {
     topDiv.className = "container";
     rowDiv.className = "row";
-    homeImg.className = "col-xs-3 col-sm-1";
+    homeImg.className = "col-xs-3 col-sm-1 mx-auto";
     homeImg.id = "filter-img";
     homeImg.src = "images/home.png";
-    photographyImg.className = "col-xs-3 col-sm-1";
+    photographyImg.className = "col-xs-3 col-sm-1 mx-auto";
     photographyImg.id = "filter-img";
     photographyImg.src = "images/photo-camera.png";
-    cateringImg.className = "col-xs-3 col-sm-1";
+    cateringImg.className = "col-xs-3 col-sm-1 mx-auto";
     cateringImg.id = "filter-img";
     cateringImg.src = "images/buffet.png";
-    venuesImg.className = "col-xs-3 col-sm-1";
+    venuesImg.className = "col-xs-3 col-sm-1 mx-auto";
     venuesImg.id = "filter-img";
     venuesImg.src = "images/placeholder.png";
-    staffingImg.className = "col-xs-3 col-sm-1";
+    staffingImg.className = "col-xs-3 col-sm-1 mx-auto";
     staffingImg.id = "filter-img";
     staffingImg.src = "images/staff.png";
-    decorationImg.className = "col-xs-3 col-sm-1";
+    decorationImg.className = "col-xs-3 col-sm-1 mx-auto";
     decorationImg.id = "filter-img";
     decorationImg.src = "images/floating-balloons.png";
-    entertainmentImg.className = "col-xs-3 col-sm-1";
+    entertainmentImg.className = "col-xs-3 col-sm-1 mx-auto";
     entertainmentImg.id = "filter-img";
     entertainmentImg.src = "images/drummer-set.png";
+    myQuotesImg.className = "col-xs-3 col-sm-1 mx-auto";
+    myQuotesImg.id = "filter-img"
+    myQuotesImg.src = "images/receipt.png"
+
 
     navDiv.append(topDiv);
     topDiv.append(rowDiv);
@@ -46,7 +50,8 @@ const filterButtons = function () {
         venuesImg,
         entertainmentImg,
         staffingImg,
-        decorationImg
+        decorationImg,
+        myQuotesImg
     );
 }
 
@@ -78,3 +83,12 @@ entertainmentImg.addEventListener("click", function () {
     selectedService = "Photography";
     renderAvailableVendors();
 });
+myQuotesImg.addEventListener("click", function () {
+    vendorsListedSection = "";
+    renderMyQuotes();
+});
+
+const filterByService = function (selectedService) {
+    filteredService = vendors.filter(vendor => vendor.service == selectedService);
+    return filteredService;
+};
