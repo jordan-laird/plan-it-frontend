@@ -35,10 +35,15 @@ const logoField = document.createElement("input");
 logo.innerHTML = "Logo URL (for now lolol): ";
 logo.append(logoField);
 
-const vendorLocation = document.createElement("p");
-const locationField = document.createElement("input");
-vendorLocation.innerHTML = "Location (city and state): ";
-vendorLocation.append(locationField);
+const vendorCity = document.createElement("p");
+const cityField = document.createElement("input");
+vendorCity.innerHTML = "City: ";
+vendorCity.append(cityField);
+
+const vendorState = document.createElement("p");
+const stateField = document.createElement("input");
+vendorState.innerHTML = "State: ";
+vendorState.append(stateField);
 
 const service = document.createElement("p");
 const serviceField = document.createElement("select");
@@ -116,7 +121,8 @@ const vendorFirst = () => {
     contentDiv.append(
       name,
       email,
-      vendorLocation,
+      vendorCity,
+      vendorState,
       service,
       phone,
       website,
@@ -154,41 +160,126 @@ const vendorFirst = () => {
   body.append(contentDiv);
 };
 
-const renderVendorsInterface = () => {
-  contentDiv.innerHTML = "";
+const vendorNav = document.createElement("div");
+profileImg = document.createElement("img");
+profileImg.src =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZCGyzQCpBWIboSErgUWkpGjp6NnHDRHNukRLST7JZ484gOrrN";
+profileImg.style = "height: 100px;";
 
-  const name = document.createElement("h3");
-  name.innerHTML = `<b>${currentUser.name}</b>`;
-  const email = document.createElement("p");
-  email.innerHTML = currentUser.email;
-  const vendorLocation = document.createElement("p");
-  vendorLocation.innerHTML = `${currentUser.location}`;
-  const service = document.createElement("p");
-  service.innerHTML = `${currentUser.service}`;
-  const phone = document.createElement("p");
-  phone.innerHTML = `${currentUser.phone}`;
-  const website = document.createElement("p");
-  website.innerHTML = `${currentUser.website}`;
-  const logo = document.createElement("img");
-  logo.src = `${currentUser.logo_img}`;
-  const description = document.createElement("p");
-  description.innerHTML = `${currentUser.description}`;
-  const price = document.createElement("p");
-  price.innerHTML = currentUser.price_range;
+profileImg.className = "col-xs-3 col-sm-1";
+profileImg.id = "filter-img";
+
+const editProfileImg = document.createElement("img");
+editProfileImg.src =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZCGyzQCpBWIboSErgUWkpGjp6NnHDRHNukRLST7JZ484gOrrN";
+editProfileImg.style = "height: 100px;";
+editProfileImg.className = "col-xs-3 col-sm-1";
+editProfileImg.id = "filter-img";
+
+const myQuotesImg = document.createElement("img");
+myQuotesImg.src =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZCGyzQCpBWIboSErgUWkpGjp6NnHDRHNukRLST7JZ484gOrrN";
+myQuotesImg.style = "height: 100px;";
+
+myQuotesImg.className = "col-xs-3 col-sm-1";
+myQuotesImg.id = "filter-img";
+
+const myPortfolioImg = document.createElement("img");
+myPortfolioImg.src =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZCGyzQCpBWIboSErgUWkpGjp6NnHDRHNukRLST7JZ484gOrrN";
+myPortfolioImg.style = "height: 100px;";
+
+myPortfolioImg.className = "col-xs-3 col-sm-1";
+myPortfolioImg.id = "filter-img";
+
+const vendorTopDiv = document.createElement("div");
+const vendorRowDiv = document.createElement("div");
+vendorNav.append(vendorTopDiv);
+vendorTopDiv.append(vendorRowDiv);
+vendorRowDiv.append(profileImg, editProfileImg, myQuotesImg, myPortfolioImg);
+
+profileImg.addEventListener("click", function() {
+  renderMyVendorProfile();
+});
+
+editProfileImg.addEventListener("click", function() {
+  contentDiv.innerHTML = "";
+  contentDiv.append(vendorNav);
+  nameField.value = currentUser.name;
+  emailField.value = currentUser.email;
+  cityField.value = currentUser.city;
+  stateField.value = currentUser.state;
+  serviceField.value = currentUser.service;
+  phoneField.value = currentUser.phone;
+  websiteField.value = currentUser.website;
+  logoField.value = currentUser.logo_img;
+  descriptionField.value = currentUser.description;
+  priceField.value = currentUser.price_range;
+
+  const editVendorButton = document.createElement("button");
+  editVendorButton.innerText = "Update";
+
+  editVendorButton.addEventListener("click", function() {
+    editVendor();
+  });
 
   contentDiv.append(
     name,
     email,
-    vendorLocation,
+    vendorCity,
+    vendorState,
     service,
     phone,
     website,
     logo,
     description,
-    price
+    price,
+    password,
+    editVendorButton
   );
+});
 
-  contentDiv.append("vendor's interface ");
+const renderVendorsInterface = () => {
+  contentDiv.innerHTML = "";
+  contentDiv.append(vendorNav);
+};
+
+const renderMyVendorProfile = () => {
+  contentDiv.innerHTML = "";
+  contentDiv.append(vendorNav);
+  const name = document.createElement("h3");
+  name.innerHTML = `${currentUser.name}</b>`;
+  const email = document.createElement("p");
+  email.innerHTML = `E-mail: ${currentUser.email}`;
+  const vendorCity = document.createElement("p");
+  vendorCity.innerHTML = `City: ${currentUser.city}`;
+  const vendorState = document.createElement("p");
+  vendorState.innerHTML = `State: ${currentUser.state}`;
+  const service = document.createElement("p");
+  service.innerHTML = `Service: ${currentUser.service} ${
+    currentUser.price_range
+  }`;
+  const phone = document.createElement("p");
+  phone.innerHTML = `Phone: ${currentUser.phone}`;
+  const website = document.createElement("p");
+  website.innerHTML = `Website: ${currentUser.website}`;
+  const logo = document.createElement("img");
+  logo.src = `${currentUser.logo_img}`;
+  logo.style = "height: 100px; ";
+  const description = document.createElement("p");
+  description.innerHTML = `Description: ${currentUser.description}`;
+
+  contentDiv.append(
+    name,
+    email,
+    vendorCity,
+    vendorState,
+    service,
+    phone,
+    website,
+    logo,
+    description
+  );
 };
 
 const saveNewVendor = () => {
@@ -201,7 +292,8 @@ const saveNewVendor = () => {
     body: JSON.stringify({
       name: nameField.value,
       email: emailField.value,
-      location: locationField.value,
+      city: cityField.value,
+      state: stateField.value,
       phone: phoneField.value,
       service: serviceField.value,
       website: websiteField.value,
@@ -217,5 +309,35 @@ const saveNewVendor = () => {
     });
 
   fetching();
+  renderVendorsInterface();
+};
+
+const editVendor = () => {
+  fetch(`http://localhost:3000/api/v1/vendors/${currentUser.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      name: nameField.value,
+      email: emailField.value,
+      city: cityField.value,
+      state: stateField.value,
+      phone: phoneField.value,
+      service: serviceField.value,
+      website: websiteField.value,
+      logo_img: logoField.value,
+      description: descriptionField.value,
+      price_range: priceField.value
+    })
+  })
+    .then(resp => resp.json())
+    .then(user => {
+      currentUser = user;
+      console.log(user);
+    });
+  fetching();
+  $view = "";
   renderVendorsInterface();
 };
