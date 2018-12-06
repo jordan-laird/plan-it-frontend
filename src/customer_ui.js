@@ -157,7 +157,7 @@ const myModal = function(selectedVendor) {
   //displayed in modal
   modalName = document.createElement("h3");
   modalService = document.createElement("h4");
-  modalLocation = document.createElement("h4");
+  modalLocation= document.createElement("h4");
   modalPhone = document.createElement("p");
   modalWebsite = document.createElement("p");
   modalDescription = document.createElement("p");
@@ -166,7 +166,7 @@ const myModal = function(selectedVendor) {
 
   modalName.innerHTML = selectedVendor.name;
   modalService.innerHTML = selectedVendor.service;
-  modalLocation.innerHTML = selectedVendor.location;
+  modalLocation.innerHTML = `${selectedVendor.city}, ${selectedVendor.state}`
   modalPhone.innerHTML = selectedVendor.phone;
   modalWebsite.innerHTML = selectedVendor.website;
   modalDescription.innerHTML = selectedVendor.description;
