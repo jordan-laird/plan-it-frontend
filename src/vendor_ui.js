@@ -387,8 +387,41 @@ const renderVendorQuotes = () => {
     const commentsQuote = document.createElement("p");
     commentsQuote.innerHTML = `Comments: ${vendorQuote.comments}`;
 
+    const myResponse = document.createElement("textarea");
+    myResponse.placeholder = "Make an offer!";
+    const submitResponse = document.createElement("button");
+    submitResponse.innerHTML = "Submit";
+
     divQuote.append(budgetQuote, guestQuote, dateQuote, commentsQuote);
 
+    if (vendorQuote.status == "pending") {
+      divQuote.append(myResponse, submitResponse);
+    }
+
     vendorQuotesRows.append(divQuote);
+
+    submitResponse.addEventListener("click", function() {
+      editResponse();
+    });
+
+    const editResponse = () => {
+      fetch(`http://localhost:3000/api/v1/quotes/${vendorQuote.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          response: myResponse.value,
+          status: "responded"
+        })
+      })
+        .then(resp => resp.json())
+        .then(quote => {
+          vendorQuote = quote;
+          console.log(quote);
+          console.log(myResponse.value);
+        });
+    };
   });
 };

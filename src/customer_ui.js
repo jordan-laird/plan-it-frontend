@@ -312,7 +312,7 @@ const renderMyQuotes = () => {
     acceptButton.id = "accept-button";
 
     const denyButton = document.createElement("button");
-    denyButton.innerHTML = "Denny offer";
+    denyButton.innerHTML = "Deny offer";
     denyButton.id = "deny-button";
 
     if (myQuote.response) {
