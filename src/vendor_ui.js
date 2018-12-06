@@ -89,37 +89,7 @@ const vendorFirst = () => {
 
 const renderVendorsInterface = () => {
   contentDiv.innerHTML = "";
-  //   contentDiv.append("vendor's interface ");
-  const name = document.createElement("h3");
-  name.innerHTML = `<b>${currentUser.name}</b>`;
-  const email = document.createElement("p");
-  email.innerHTML = currentUser.email;
-  const vendorLocation = document.createElement("p");
-  vendorLocation.innerHTML = `${currentUser.location}`;
-  const service = document.createElement("p");
-  service.innerHTML = `${currentUser.service}`;
-  const phone = document.createElement("p");
-  phone.innerHTML = `${currentUser.phone}`;
-  const website = document.createElement("p");
-  website.innerHTML = `${currentUser.website}`;
-  const logo = document.createElement("img");
-  logo.src = `${currentUser.logo_img}`;
-  const description = document.createElement("p");
-  description.innerHTML = `${currentUser.description}`;
-  const price = document.createElement("p");
-  price.innerHTML = currentUser.price_range;
-
-  contentDiv.append(
-    name,
-    email,
-    vendorLocation,
-    service,
-    phone,
-    website,
-    logo,
-    description,
-    price
-  );
+  contentDiv.append("vendor's interface ");
 };
 
 const saveNewVendor = () => {
