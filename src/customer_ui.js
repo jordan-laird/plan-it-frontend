@@ -1,6 +1,5 @@
 let selectedVendor;
 
-
 const name = document.createElement("p");
 const nameField = document.createElement("input");
 name.innerHTML = "Name: ";
@@ -109,8 +108,8 @@ const renderAvailableVendors = function() {
   filteredVendors.forEach(function(vendor) {
     //creating elements
     vendorDiv = document.createElement("div");
-    vendorDiv.id = "vendor-div"
-    vendorDiv.className = "col-xs-12 mx-auto"
+    vendorDiv.id = "vendor-div";
+    vendorDiv.className = "col-xs-12 mx-auto";
     vendorName = document.createElement("h3");
     vendorService = document.createElement("h4");
     vendorLogo = document.createElement("img");
@@ -301,9 +300,25 @@ const renderMyQuotes = () => {
     messageQuote.innerHTML = `Message sent: ${myQuote.comments}`;
     divQuote.append(messageQuote);
 
+    const statusQuote = document.createElement("p");
+    statusQuote.innerHTML = `Status: ${myQuote.status}`;
+    divQuote.append(statusQuote);
+
+    const responseQuote = document.createElement("p");
+    responseQuote.innerHTML = `Vendor's response: ${myQuote.response}`;
+
+    const acceptButton = document.createElement("button");
+    acceptButton.innerHTML = "Accept offer";
+    acceptButton.id = "accept-button";
+
+    const denyButton = document.createElement("button");
+    denyButton.innerHTML = "Denny offer";
+    denyButton.id = "deny-button";
+
+    if (myQuote.response) {
+      divQuote.append(responseQuote, acceptButton, denyButton);
+    }
     quotesRows.append(divQuote);
     // contentDiv.append(divQuote);
   });
 };
-
-
