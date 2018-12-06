@@ -90,16 +90,21 @@ const saveNewCustomer = () => {
     });
   fetching();
   renderAvailableVendors();
+  
 };
 
 const renderAvailableVendors = function() {
+  // availableStates()
   filterButtons();
   if (selectedService) {
     filteredVendors = filterByService(selectedService);
+    // if (selectedState){
+    //   filteredVendors = filterByState(selectedState, filteredVendors)
+    // }
   } else {
     filteredVendors = vendors;
   }
-  console.log(typeof vendors);
+  
 
   contentDiv.innerHTML = "";
   const vendorsListedSection = document.createElement("div");
