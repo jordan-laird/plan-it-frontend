@@ -13,6 +13,7 @@ let selectedService;
 let filteredVendors;
 
 //=======
+const navDiv = function(){
   topDiv.className = "container";
   rowDiv.className = "row";
   homeImg.className = "col-md-1";
@@ -48,7 +49,7 @@ let filteredVendors;
     staffingImg,
     decorationImg
   );
-
+}
 
 homeImg.addEventListener("click", function() {
   selectedService = null;
