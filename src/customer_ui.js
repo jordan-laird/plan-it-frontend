@@ -71,7 +71,7 @@ decorationImg.addEventListener('click', function(){
     renderAvailableVendors()
 })
 entertainmentImg.addEventListener('click', function(){
-    selectedService = "Photography"
+    selectedService = "Entertainment"
     renderAvailableVendors()
 })
 

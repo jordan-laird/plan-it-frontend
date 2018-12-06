@@ -3,6 +3,11 @@
     height: 5%;
 }
 
+#filter-img:hover,
+#filter-img:focus {
+    background-color: gray
+}
+
 /* .container{
     display: flex;
     flex-direction: column;
