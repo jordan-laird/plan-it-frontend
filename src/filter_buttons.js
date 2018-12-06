@@ -10,6 +10,7 @@ let decorationImg = document.createElement("img");
 let myQuotesCustomerImg = document.createElement("img");
 let selectedService;
 let filteredVendors;
+let selectedState;
 
 //=======
 const filterButtons = function() {
@@ -87,7 +88,13 @@ myQuotesCustomerImg.addEventListener("click", function() {
   renderMyQuotes();
 });
 
-const filterByService = function(selectedService) {
-  filteredService = vendors.filter(vendor => vendor.service == selectedService);
-  return filteredService;
+const filterByService = function (selectedService) {
+    filteredService = vendors.filter(vendor => vendor.service == selectedService);
+    return filteredService;
 };
+
+const filterByState = function (selectedState){
+    filteredState = vendors.filter(vendor => vendor.state == selectedState);
+    return filteredState;
+}
+
