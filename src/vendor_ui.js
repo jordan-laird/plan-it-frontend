@@ -90,6 +90,7 @@ const vendorFirst = () => {
 const renderVendorsInterface = () => {
   contentDiv.innerHTML = "";
 
+
   const name = document.createElement("h3");
   name.innerHTML = `<b>${currentUser.name}</b>`;
   const email = document.createElement("p");
@@ -120,6 +121,9 @@ const renderVendorsInterface = () => {
     description,
     price
   );
+
+  contentDiv.append("vendor's interface ");
+
 };
 
 const saveNewVendor = () => {

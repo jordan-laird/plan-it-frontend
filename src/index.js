@@ -1,7 +1,8 @@
+let quotes;
 let vendors;
 let customers;
 let currentUser;
-
+const body = document.querySelector("body");
 const submitCustomerButton = document.createElement("button");
 submitCustomerButton.innerHTML = "Create account";
 
@@ -25,20 +26,31 @@ const fetching = () => {
         .then(function(resultCust) {
           customers = resultCust;
 
-          render();
+          fetch("http://localhost:3000/api/v1/quotes")
+            .then(function(responseQuo) {
+              return responseQuo.json();
+            })
+            .then(function(resultQuo) {
+              quotes = resultQuo;
+              render();
+            });
         });
     });
 };
 
 const render = () => {
-  if ($view) currentUser = null;
   switch ($view) {
     case "customer":
+      currentUser = null;
       customerFirst();
       break;
 
     case "vendor":
+      currentUser = null;
       vendorFirst();
+      break;
+    case "customerQuote":
+      renderMyQuotes();
       break;
   }
 };
