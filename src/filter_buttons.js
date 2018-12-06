@@ -10,6 +10,7 @@ let decorationImg = document.createElement("img");
 let myQuotesImg = document.createElement("img");
 let selectedService;
 let filteredVendors;
+let selectedState;
 
 //=======
 const filterButtons = function () {
@@ -92,3 +93,8 @@ const filterByService = function (selectedService) {
     filteredService = vendors.filter(vendor => vendor.service == selectedService);
     return filteredService;
 };
+
+const filterByState = function (selectedState){
+    filteredState = vendors.filter(vendor => vendor.state == selectedState);
+    return filteredState;
+}
