@@ -9,13 +9,16 @@
 
 #filter-img:hover,
 #filter-img:focus {
-  background-color: gray;
+  background-color: white;;
 }
 
 /* .container{
     display: flex;
     flex-direction: column;
 } */
+body {
+  background-color: lightblue;
+}
 
 #vendor-logo{
     height: 100px;
@@ -28,12 +31,10 @@
 #topDiv{
   background-color: #985e6d; 
 }
-body {
-  background-color: #828bb2
-}
+
 #vendor-div{
   text-align:center;
-  background-color: #f4e5da;
+  background-color: #f7f8f8;
   /* img-: center; */
   width: 250px;
   
