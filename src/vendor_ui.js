@@ -116,6 +116,8 @@ const vendorFirst = () => {
   vendorRegisterButton.innerHTML = "Register";
   vendorLogInButton.innerHTML = "Log In";
 
+  vendorLogInButton.style = "margin-right: 50px;";
+
   vendorRegisterButton.addEventListener("click", function() {
     contentDiv.innerHTML = "";
 
@@ -170,7 +172,7 @@ profileImg.className = "col-xs-3 col-sm-1";
 profileImg.id = "filter-img";
 
 const editProfileImg = document.createElement("img");
-editProfileImg.src = "images/edit.png";
+editProfileImg.src = "images/pencil.png";
 editProfileImg.style = "height: 100px;";
 editProfileImg.className = "col-xs-3 col-sm-1";
 editProfileImg.id = "filter-img";

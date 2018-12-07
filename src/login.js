@@ -10,9 +10,10 @@ firstPage.id = "first-page";
 const logInText = document.createElement("h3");
 const customerButton = document.createElement("button");
 const vendorButton = document.createElement("button");
-logInText.innerHTML = "I am...";
-customerButton.innerHTML = "looking for a service";
-vendorButton.innerHTML = "a vendor";
+// logInText.innerHTML = "What brings you here?";
+customerButton.innerHTML = "I'm planning an event";
+
+vendorButton.innerHTML = "I'm offering a service";
 customerButton.className = "btn btn-secondary";
 vendorButton.className = "btn btn-secondary";
 
@@ -25,8 +26,10 @@ vendorButton.addEventListener("click", function() {
   $view = "vendor";
   fetching();
 });
-
-firstPage.append(logInText);
+firstPage.style = "margin-top: 100px;";
+customerButton.style = "margin-right: 50px;";
+// logInText.style = "text-align: center;";
+// firstPage.append(logInText);
 firstPage.append(customerButton);
 firstPage.append(vendorButton);
 body.append(navDiv);

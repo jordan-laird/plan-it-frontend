@@ -38,6 +38,7 @@ const customerFirst = () => {
     contentDiv.append(name, email, photo, password, submitCustomerButton);
   });
 
+  customerLogInButton.style = "margin-right: 50px;";
   submitCustomerButton.addEventListener("click", function() {
     saveNewCustomer();
     $view = "";
@@ -107,9 +108,9 @@ const renderAvailableVendors = function() {
   const vendorsListedSection = document.createElement("div");
   vendorsListedSection.id = "vendor-section";
   vendorsListedSection.className = "container";
-  const vendorsListedRow = document.createElement('div')
-  vendorsListedRow.className = "row"
- 
+  const vendorsListedRow = document.createElement("div");
+  vendorsListedRow.className = "row";
+
   filteredVendors.forEach(function(vendor) {
     //creating elements
     vendorDiv = document.createElement("div");
@@ -118,7 +119,7 @@ const renderAvailableVendors = function() {
     vendorName = document.createElement("h3");
     vendorService = document.createElement("h4");
     vendorLogo = document.createElement("img");
-    vendorLogo
+    vendorLogo;
     vendorInfoButton = document.createElement("button");
     vendorInfoButton.className = "btn btn-secondary";
 
@@ -144,7 +145,7 @@ const renderAvailableVendors = function() {
 
     //appending
     contentDiv.append(vendorsListedSection);
-    vendorsListedSection.append(vendorsListedRow)
+    vendorsListedSection.append(vendorsListedRow);
     vendorsListedRow.append(vendorDiv);
     vendorDiv.append(vendorName, vendorService, vendorLogo, vendorInfoButton);
     // vendorDiv.append(vendorService);
