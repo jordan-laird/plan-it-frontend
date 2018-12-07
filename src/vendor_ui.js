@@ -109,7 +109,9 @@ const vendorFirst = () => {
   contentDiv.innerHTML = "";
   const vendorTitle = document.createElement("h3");
   const vendorLogInButton = document.createElement("button");
+  vendorLogInButton.className = "btn btn-secondary";
   const vendorRegisterButton = document.createElement("button");
+  vendorRegisterButton.className = "btn btn-secondary";
 
   vendorTitle.innerHTML = "vendor view";
   vendorRegisterButton.innerHTML = "Register";
@@ -215,6 +217,7 @@ editProfileImg.addEventListener("click", function() {
   priceField.value = currentUser.price_range;
 
   const editVendorButton = document.createElement("button");
+  editVendorButton.className = "btn btn-secondary";
   editVendorButton.innerText = "Update";
 
   editVendorButton.addEventListener("click", function() {
@@ -393,6 +396,7 @@ const renderVendorQuotes = () => {
     const myResponse = document.createElement("textarea");
     myResponse.placeholder = "Make an offer!";
     const submitResponse = document.createElement("button");
+    submitResponse.className = "btn btn-secondary";
     submitResponse.innerHTML = "Submit";
 
     divQuote.append(

@@ -1,8 +1,5 @@
 let $view;
 const title = document.createElement("h1");
-title.className = "col-xs-12 mx-auto";
-
-title.innerHTML = "PlanIt";
 body.append(title);
 
 const navDiv = document.createElement("div");
@@ -14,8 +11,10 @@ const logInText = document.createElement("h3");
 const customerButton = document.createElement("button");
 const vendorButton = document.createElement("button");
 logInText.innerHTML = "I am...";
-customerButton.innerHTML = "I'm looking for a service";
-vendorButton.innerHTML = "I am a vendor";
+customerButton.innerHTML = "looking for a service";
+vendorButton.innerHTML = "a vendor";
+customerButton.className = "btn btn-secondary";
+vendorButton.className = "btn btn-secondary";
 
 customerButton.addEventListener("click", function() {
   $view = "customer";
@@ -34,3 +33,6 @@ body.append(navDiv);
 contentDiv.append(firstPage);
 body.append(contentDiv);
 
+// allButtons = documents.querySelectorAll("button");
+// customerButton.className = "btn btn-primary";
+// customerButton.type = "button";

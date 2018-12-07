@@ -15,10 +15,59 @@ let myQuotesCustomerImg = document.createElement("img");
 let selectedService;
 let filteredVendors;
 let selectedState;
-const allStates = ['Alabama','Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',  'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-]
-
-
+const allStates = [
+  "Alabama",
+  "Alaska",
+  "Arizona",
+  "Arkansas",
+  "California",
+  "Colorado",
+  "Connecticut",
+  "Delaware",
+  "District of Columbia",
+  "Florida",
+  "Georgia",
+  "Hawaii",
+  "Idaho",
+  "Illinois",
+  "Indiana",
+  "Iowa",
+  "Kansas",
+  "Kentucky",
+  "Louisiana",
+  "Maine",
+  "Maryland",
+  "Massachusetts",
+  "Michigan",
+  "Minnesota",
+  "Mississippi",
+  "Missouri",
+  "Montana",
+  "Nebraska",
+  "Nevada",
+  "New Hampshire",
+  "New Jersey",
+  "New Mexico",
+  "New York",
+  "North Carolina",
+  "North Dakota",
+  "Ohio",
+  "Oklahoma",
+  "Oregon",
+  "Pennsylvania",
+  "Rhode Island",
+  "South Carolina",
+  "South Dakota",
+  "Tennessee",
+  "Texas",
+  "Utah",
+  "Vermont",
+  "Virginia",
+  "Washington",
+  "West Virginia",
+  "Wisconsin",
+  "Wyoming"
+];
 
 // const availableStates = function(){
 //     navDiv.innerHTML = ""
@@ -33,18 +82,15 @@ const allStates = ['Alabama','Alaska', 'Arizona', 'Arkansas', 'California', 'Col
 //         selectStateDropdown.append(stateOption)
 //     })
 
-    
 //     selectStateDropdown.addEventListener('change', function () {
 //         selectedState = selectStateDropdown.value
 //         filterByService(selectedState)
 //         // console.log(filterByState(selectedState, vendorArray))
 //     })
 // }
-    
- 
-
 
 //=======
+
 const filterButtons = function() {
   topDiv.className = "container";
   rowDiv.className = "row";
@@ -120,13 +166,13 @@ myQuotesCustomerImg.addEventListener("click", function() {
   renderMyQuotes();
 });
 
-const filterByService = function (selectedService ) {
-    filteredService = vendors.filter(vendor => vendor.service == selectedService);
-    return filteredService;
-    // filteredVendors = vendors.filter(function(vendor){
-    //     return vendor.state == selectedState && vendor.service =-=
-    // }vendor.service == selectedService,);
-    // return filteredVendors;
+const filterByService = function(selectedService) {
+  filteredService = vendors.filter(vendor => vendor.service == selectedService);
+  return filteredService;
+  // filteredVendors = vendors.filter(function(vendor){
+  //     return vendor.state == selectedState && vendor.service =-=
+  // }vendor.service == selectedService,);
+  // return filteredVendors;
 };
 
 // const filterByState = function (selectedState, vendorArray){
@@ -139,4 +185,3 @@ const filterByService = function (selectedService ) {
 //         });
 //     return temp;
 // }
-
