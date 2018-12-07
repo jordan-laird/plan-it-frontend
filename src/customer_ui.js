@@ -118,6 +118,7 @@ const renderAvailableVendors = function() {
     vendorName = document.createElement("h3");
     vendorService = document.createElement("h4");
     vendorLogo = document.createElement("img");
+    vendorLogo
     vendorInfoButton = document.createElement("button");
     vendorInfoButton.className = "btn btn-secondary";
 
@@ -145,10 +146,10 @@ const renderAvailableVendors = function() {
     contentDiv.append(vendorsListedSection);
     vendorsListedSection.append(vendorsListedRow)
     vendorsListedRow.append(vendorDiv);
-    vendorDiv.append(vendorName);
-    vendorDiv.append(vendorService);
-    vendorDiv.append(vendorLogo);
-    vendorDiv.append(vendorInfoButton);
+    vendorDiv.append(vendorName, vendorService, vendorLogo, vendorInfoButton);
+    // vendorDiv.append(vendorService);
+    // vendorDiv.append(vendorLogo);
+    // vendorDiv.append(vendorInfoButton);
   });
 };
 
@@ -279,8 +280,8 @@ const renderMyQuotes = () => {
     );
 
     const divQuote = document.createElement("div");
-    divQuote.className = "col-md-3";
-    divQuote.id = "quoteCard";
+    divQuote.className = "col-xs-6 rounded mx-auto";
+    divQuote.id = "vendor-div";
 
     const nameQuote = document.createElement("h3");
     nameQuote.innerHTML = myQuoteVendor[0].name;
