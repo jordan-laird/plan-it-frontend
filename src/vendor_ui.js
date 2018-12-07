@@ -369,8 +369,8 @@ const renderVendorQuotes = firstPage => {
 
   myVendorQuotes.forEach(vendorQuote => {
     const divQuote = document.createElement("div");
-    divQuote.className = "col-md-3";
-    divQuote.id = "quoteCard";
+    divQuote.className = "col-xs-6 rounded mx-auto";
+    divQuote.id = "vendor-div";
 
     let customerRequesting = customers.filter(
       customer => customer.id == vendorQuote.customer_id
