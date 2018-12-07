@@ -1,6 +1,6 @@
-allButtons = document.querySelectorAll('button')
+allButtons = document.querySelectorAll("button");
 // allButtons.className = "btn btn-secondary"
-allButtons.forEach((button) => button.className = 'btn btn-secondary')
+allButtons.forEach(button => (button.className = "btn btn-secondary"));
 
 let topDiv = document.createElement("div");
 let rowDiv = document.createElement("div");
@@ -14,87 +14,11 @@ let decorationImg = document.createElement("img");
 let myQuotesCustomerImg = document.createElement("img");
 let selectedService;
 let filteredVendors;
-let selectedState;
-const allStates = [
-  "Alabama",
-  "Alaska",
-  "Arizona",
-  "Arkansas",
-  "California",
-  "Colorado",
-  "Connecticut",
-  "Delaware",
-  "District of Columbia",
-  "Florida",
-  "Georgia",
-  "Hawaii",
-  "Idaho",
-  "Illinois",
-  "Indiana",
-  "Iowa",
-  "Kansas",
-  "Kentucky",
-  "Louisiana",
-  "Maine",
-  "Maryland",
-  "Massachusetts",
-  "Michigan",
-  "Minnesota",
-  "Mississippi",
-  "Missouri",
-  "Montana",
-  "Nebraska",
-  "Nevada",
-  "New Hampshire",
-  "New Jersey",
-  "New Mexico",
-  "New York",
-  "North Carolina",
-  "North Dakota",
-  "Ohio",
-  "Oklahoma",
-  "Oregon",
-  "Pennsylvania",
-  "Rhode Island",
-  "South Carolina",
-  "South Dakota",
-  "Tennessee",
-  "Texas",
-  "Utah",
-  "Vermont",
-  "Virginia",
-  "Washington",
-  "West Virginia",
-  "Wisconsin",
-  "Wyoming"
-];
-
-// const availableStates = function(){
-//     navDiv.innerHTML = ""
-//     const selectStateDropdown = document.createElement("select")
-//     navDiv.append(selectStateDropdown)
-//     // selectStateDropdown.innerHTML = ""
-//     allStates.forEach(function(state){
-//         // console.log(state)
-//         stateOption = document.createElement("option")
-//         stateOption.setAttribute("value", state)
-//         stateOption.innerHTML = state
-//         selectStateDropdown.append(stateOption)
-//     })
-
-//     selectStateDropdown.addEventListener('change', function () {
-//         selectedState = selectStateDropdown.value
-//         filterByService(selectedState)
-//         // console.log(filterByState(selectedState, vendorArray))
-//     })
-// }
-
-//=======
 
 const filterButtons = function() {
   topDiv.className = "container";
   rowDiv.className = "row";
-  topDiv.id = "nav-div"
+  topDiv.id = "nav-div";
   homeImg.className = "col-xs-3 col-sm-1 mx-auto";
   homeImg.id = "filter-img";
   homeImg.src = "images/home.png";

@@ -166,26 +166,24 @@ const vendorFirst = () => {
 const vendorNav = document.createElement("div");
 profileImg = document.createElement("img");
 profileImg.src = "images/user.png";
-profileImg.style = "height: 100px;";
-
-profileImg.className = "col-xs-3 col-sm-1";
+profileImg.className = "col-xs-3 col-sm-1 mx-auto";
 profileImg.id = "filter-img";
 
 const editProfileImg = document.createElement("img");
 editProfileImg.src = "images/pencil.png";
-editProfileImg.style = "height: 100px;";
 editProfileImg.className = "col-xs-3 col-sm-1";
 editProfileImg.id = "filter-img";
 
 const myQuotesImg = document.createElement("img");
 myQuotesImg.src = "images/receipt.png";
-myQuotesImg.style = "height: 100px;";
-
 myQuotesImg.className = "col-xs-3 col-sm-1";
 myQuotesImg.id = "filter-img";
 
 const vendorTopDiv = document.createElement("div");
 const vendorRowDiv = document.createElement("div");
+
+vendorTopDiv.className = "container";
+vendorRowDiv.style = "text-align: center;";
 vendorNav.append(vendorTopDiv);
 vendorTopDiv.append(vendorRowDiv);
 vendorRowDiv.append(profileImg, editProfileImg, myQuotesImg);
