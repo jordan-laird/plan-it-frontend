@@ -107,12 +107,14 @@ const renderAvailableVendors = function() {
   const vendorsListedSection = document.createElement("div");
   vendorsListedSection.id = "vendor-section";
   vendorsListedSection.className = "container";
-
+  const vendorsListedRow = document.createElement('div')
+  vendorsListedRow.className = "row"
+ 
   filteredVendors.forEach(function(vendor) {
     //creating elements
     vendorDiv = document.createElement("div");
     vendorDiv.id = "vendor-div";
-    vendorDiv.className = "col-xs-6 rounded mx-auto";
+    vendorDiv.className = "col-xs-6s rounded mx-auto";
     vendorName = document.createElement("h3");
     vendorService = document.createElement("h4");
     vendorLogo = document.createElement("img");
@@ -141,7 +143,8 @@ const renderAvailableVendors = function() {
 
     //appending
     contentDiv.append(vendorsListedSection);
-    vendorsListedSection.append(vendorDiv);
+    vendorsListedSection.append(vendorsListedRow)
+    vendorsListedRow.append(vendorDiv);
     vendorDiv.append(vendorName);
     vendorDiv.append(vendorService);
     vendorDiv.append(vendorLogo);

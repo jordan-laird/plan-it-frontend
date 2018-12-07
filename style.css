@@ -32,8 +32,10 @@
 #vendor-div{
   text-align:center;
   background-color: #98878f;
-  img-: center;
-  
+  /* img-: center; */
+  width: 250px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   padding-top: 25px;
   padding-bottom: 25px;
   border: 1px solid #888;

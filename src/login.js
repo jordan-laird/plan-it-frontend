@@ -34,6 +34,3 @@ body.append(navDiv);
 contentDiv.append(firstPage);
 body.append(contentDiv);
 
-allButtons = documents.querySelectorAll('button')
-customerButton.className = "btn btn-primary"
-customerButton.type = "button"
