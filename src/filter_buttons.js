@@ -15,6 +15,7 @@ const allStates = ['Alabama','Alaska', 'Arizona', 'Arkansas', 'California', 'Col
 ]
 
 
+
 // const availableStates = function(){
 //     navDiv.innerHTML = ""
 //     const selectStateDropdown = document.createElement("select")

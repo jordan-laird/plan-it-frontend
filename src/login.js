@@ -30,3 +30,7 @@ contentDiv.append(customerButton);
 contentDiv.append(vendorButton);
 body.append(navDiv)
 body.append(contentDiv);
+
+allButtons = documents.querySelectorAll('button')
+customerButton.className = "btn btn-primary"
+customerButton.type = "button"
