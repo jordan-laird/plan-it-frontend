@@ -112,10 +112,11 @@ const renderAvailableVendors = function() {
     //creating elements
     vendorDiv = document.createElement("div");
     vendorDiv.id = "vendor-div";
-    vendorDiv.className = "col-xs-12 mx-auto";
+    vendorDiv.className = "col-xs-6 rounded mx-auto";
     vendorName = document.createElement("h3");
     vendorService = document.createElement("h4");
     vendorLogo = document.createElement("img");
+    vendorLogo.className = "rounded mx-auto d-block"
     vendorInfoButton = document.createElement("button");
 
     //setting element properties
@@ -273,7 +274,7 @@ const renderMyQuotes = () => {
     );
 
     const divQuote = document.createElement("div");
-    divQuote.className = "col-md-3";
+    // divQuote.className = "col-xs-1 col-md-3";
     divQuote.id = "quoteCard";
 
     const nameQuote = document.createElement("h3");
