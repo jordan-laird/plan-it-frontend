@@ -94,6 +94,7 @@ const allStates = [
 const filterButtons = function() {
   topDiv.className = "container";
   rowDiv.className = "row";
+  topDiv.id = "nav-div"
   homeImg.className = "col-xs-3 col-sm-1 mx-auto";
   homeImg.id = "filter-img";
   homeImg.src = "images/home.png";
@@ -158,7 +159,7 @@ decorationImg.addEventListener("click", function() {
   renderAvailableVendors();
 });
 entertainmentImg.addEventListener("click", function() {
-  selectedService = "Photography";
+  selectedService = "Entertainment";
   renderAvailableVendors();
 });
 myQuotesCustomerImg.addEventListener("click", function() {
