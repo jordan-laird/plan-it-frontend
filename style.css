@@ -28,18 +28,21 @@
 #topDiv{
   background-color: #985e6d; 
 }
-
+body {
+  background-color: #828bb2
+}
 #vendor-div{
   text-align:center;
-  background-color: #98878f;
+  background-color: #f4e5da;
   /* img-: center; */
   width: 250px;
+  
   margin-top: 15px;
   margin-bottom: 15px;
   padding-top: 25px;
   padding-bottom: 25px;
   border: 1px solid #888;
-  box-shadow: 0 15px 10px red;
+  box-shadow: 0 15px 10px #6c757c;
   /* transform: rotate(3deg) */
 }
 #vendor-div h3 {
@@ -53,7 +56,7 @@
 
 .modal {
   display: none; /* Hidden by default */
-  margin: 20% auto;
+  margin: auto;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -61,9 +64,9 @@
   width: 50%; /* Full width */
   height: window - 200px; /* Full height */
   /* overflow: enable; Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-  max-height: 100vh;
+  /* background-color: rgb(0, 0, 0); /* Fallback color */
+  /* background-color: rgba(0, 0, 0, 0.4); Black w/ opacity */ */
+  /* max-height: 100vh; */
   overflow-y: auto;
 }
 
@@ -79,15 +82,16 @@ Modal Content/Box */
   border: 1px solid #888;
   width: 75%; /* Could be more or less, depending on screen size */
   text-align: center;
+  overflow-y: scroll;
 }
 
 /* The Close Button */
-.close {
+/* .close {
   color: #aaa;
   float: center;
   font-size: 28px;
   font-weight: bold;
-}
+} */
 
 .close:hover,
 .close:focus {
