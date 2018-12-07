@@ -5,12 +5,15 @@ let currentUser;
 const body = document.querySelector("#body-row");
 const submitCustomerButton = document.createElement("button");
 submitCustomerButton.innerHTML = "Create account";
+submitCustomerButton.className = "btn btn-secondary";
 
 const signInButtom = document.createElement("button");
 signInButtom.innerHTML = "Sign In";
+signInButtom.className = "btn btn-secondary";
 
 const submitVendorButton = document.createElement("button");
 submitVendorButton.innerHTML = "Create account";
+submitVendorButton.className = "btn btn-secondary";
 
 const fetching = () => {
   fetch("http://localhost:3000/api/v1/vendors")
@@ -57,7 +60,5 @@ const render = () => {
       break;
   }
 };
-
-
 
 fetching();

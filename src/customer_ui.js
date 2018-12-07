@@ -28,10 +28,10 @@ const customerFirst = () => {
   const customerTitle = document.createElement("h3");
   const customerLogInButton = document.createElement("button");
   const customerRegisterButton = document.createElement("button");
-  customerTitle.innerHTML = "customer view";
   customerRegisterButton.innerHTML = "Register";
   customerLogInButton.innerHTML = "Log In";
-
+  customerRegisterButton.className = "btn btn-secondary";
+  customerLogInButton.className = "btn btn-secondary";
   customerRegisterButton.addEventListener("click", function() {
     contentDiv.innerHTML = "";
 
@@ -112,12 +112,12 @@ const renderAvailableVendors = function() {
     //creating elements
     vendorDiv = document.createElement("div");
     vendorDiv.id = "vendor-div";
-    vendorDiv.className = "col-xs-6 rounded mx-auto";
+    vendorDiv.className = "col-xs-12 mx-auto";
     vendorName = document.createElement("h3");
     vendorService = document.createElement("h4");
     vendorLogo = document.createElement("img");
-    vendorLogo.className = "rounded mx-auto d-block"
     vendorInfoButton = document.createElement("button");
+    vendorInfoButton.className = "btn btn-secondary";
 
     //setting element properties
 
@@ -179,6 +179,7 @@ const myModal = function(selectedVendor) {
   // closing modal
   closeModal = document.createElement("button");
   closeModal.className = "close";
+  closeModal.className = "btn btn-secondary";
   closeModal.innerHTML = "Close";
   closeModal.addEventListener("click", function() {
     modalDiv.style.display = "none";
@@ -229,6 +230,7 @@ const createNewQuote = selectedVendor => {
 
   const submitQuote = document.createElement("button");
   submitQuote.innerHTML = "Submit";
+  submitQuote.className = "btn btn-secondary";
 
   modalQuoteDiv.append(eventDate, guestCount, budget, comments, submitQuote);
 
@@ -274,7 +276,7 @@ const renderMyQuotes = () => {
     );
 
     const divQuote = document.createElement("div");
-    // divQuote.className = "col-xs-1 col-md-3";
+    divQuote.className = "col-md-3";
     divQuote.id = "quoteCard";
 
     const nameQuote = document.createElement("h3");
@@ -314,10 +316,12 @@ const renderMyQuotes = () => {
     const acceptButton = document.createElement("button");
     acceptButton.innerHTML = "Accept offer";
     acceptButton.id = "accept-button";
+    acceptButton.className = "btn btn-secondary";
 
     const denyButton = document.createElement("button");
     denyButton.innerHTML = "Deny offer";
     denyButton.id = "deny-button";
+    denyButton.className = "btn btn-secondary";
 
     if (myQuote.status == "responded") {
       divQuote.append(responseQuote, acceptButton, denyButton);
