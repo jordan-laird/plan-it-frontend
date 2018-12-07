@@ -1,22 +1,22 @@
-
 #filter-img {
-    width: 10%;
-    height: 10%;
-    margin-top: 25px;
-    margin-bottom: 50px;
+  width: 10%;
+  height: 10%;
+  margin-top: 25px;
+  margin-bottom: 50px;
 }
 
 
 
 #filter-img:hover,
 #filter-img:focus {
-    background-color: gray
+  background-color: gray;
 }
 
 /* .container{
     display: flex;
     flex-direction: column;
 } */
+
 #vendor-logo{
     height: 100px;
     width: 100px;
@@ -33,6 +33,7 @@
   text-align:center;
   background-color: #98878f;
   img-: center;
+  
   padding-top: 25px;
   padding-bottom: 25px;
   border: 1px solid #888;
@@ -125,4 +126,5 @@ Modal Content/Box */
   
   
 }
+
 

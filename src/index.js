@@ -52,10 +52,12 @@ const render = () => {
     case "customerQuote":
       renderMyQuotes();
       break;
+    case "vendorQuote":
+      renderVendorQuotes();
+      break;
   }
 };
 
 
 
 fetching();
-
