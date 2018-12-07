@@ -113,7 +113,6 @@ const vendorFirst = () => {
   const vendorRegisterButton = document.createElement("button");
   vendorRegisterButton.className = "btn btn-secondary";
 
-  vendorTitle.innerHTML = "vendor view";
   vendorRegisterButton.innerHTML = "Register";
   vendorLogInButton.innerHTML = "Log In";
 
@@ -171,7 +170,7 @@ profileImg.className = "col-xs-3 col-sm-1";
 profileImg.id = "filter-img";
 
 const editProfileImg = document.createElement("img");
-editProfileImg.src = "images/edituser.png";
+editProfileImg.src = "images/edit.png";
 editProfileImg.style = "height: 100px;";
 editProfileImg.className = "col-xs-3 col-sm-1";
 editProfileImg.id = "filter-img";
@@ -307,7 +306,8 @@ const saveNewVendor = () => {
     });
 
   fetching();
-  renderVendorsInterface();
+  $view = "";
+  renderVendorQuotes("p");
 };
 
 const editVendor = () => {
@@ -343,7 +343,18 @@ const editVendor = () => {
 const renderVendorQuotes = firstPage => {
   contentDiv.innerHTML = "";
   contentDiv.append(vendorNav);
-  contentDiv.append("My quotes");
+
+  const allQuotesTitle = document.createElement("h2");
+  allQuotesTitle.innerHTML = "All requested quotes";
+
+  const pendingTitle = document.createElement("h2");
+  pendingTitle.innerHTML = "Recent quotes:";
+
+  if (firstPage == "p") {
+    contentDiv.append(pendingTitle);
+  } else {
+    contentDiv.append(allQuotesTitle);
+  }
 
   let myVendorQuotes = quotes.filter(
     quote => currentUser.id == quote.vendor_id
