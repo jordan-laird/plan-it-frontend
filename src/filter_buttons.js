@@ -1,3 +1,7 @@
+allButtons = document.querySelectorAll('button')
+// allButtons.className = "btn btn-secondary"
+allButtons.forEach((button) => button.className = 'btn btn-secondary')
+
 let topDiv = document.createElement("div");
 let rowDiv = document.createElement("div");
 let homeImg = document.createElement("img");
