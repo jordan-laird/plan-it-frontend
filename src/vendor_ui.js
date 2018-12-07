@@ -32,7 +32,7 @@ priceField.append(option1, option2, option3, option4, option5);
 
 const logo = document.createElement("p");
 const logoField = document.createElement("input");
-logo.innerHTML = "Logo URL (for now lolol): ";
+logo.innerHTML = "Logo URL: ";
 logo.append(logoField);
 
 const vendorCity = document.createElement("p");
@@ -183,15 +183,6 @@ myQuotesImg.style = "height: 100px;";
 myQuotesImg.className = "col-xs-3 col-sm-1";
 myQuotesImg.id = "filter-img";
 
-//Portfolio case we have time
-// const myPortfolioImg = document.createElement("img");
-// myPortfolioImg.src =
-//   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZCGyzQCpBWIboSErgUWkpGjp6NnHDRHNukRLST7JZ484gOrrN";
-// myPortfolioImg.style = "height: 100px;";
-
-// myPortfolioImg.className = "col-xs-3 col-sm-1";
-// myPortfolioImg.id = "filter-img";
-
 const vendorTopDiv = document.createElement("div");
 const vendorRowDiv = document.createElement("div");
 vendorNav.append(vendorTopDiv);
@@ -247,6 +238,8 @@ myQuotesImg.addEventListener("click", function() {
 const renderVendorsInterface = () => {
   contentDiv.innerHTML = "";
   contentDiv.append(vendorNav);
+  console.log("hiii");
+  renderVendorQuotes("p");
 };
 
 const renderMyVendorProfile = () => {
@@ -347,10 +340,10 @@ const editVendor = () => {
   renderVendorsInterface();
 };
 
-const renderVendorQuotes = () => {
+const renderVendorQuotes = firstPage => {
   contentDiv.innerHTML = "";
   contentDiv.append(vendorNav);
-  contentDiv.innerHTML = "<h1> My quotes </h1>";
+  contentDiv.append("My quotes");
 
   let myVendorQuotes = quotes.filter(
     quote => currentUser.id == quote.vendor_id
@@ -374,7 +367,6 @@ const renderVendorQuotes = () => {
 
     const customerQuote = document.createElement("h4");
     customerQuote.innerHTML = `Requested by ${customerRequesting[0].name}`;
-    divQuote.append(customerQuote);
 
     const budgetQuote = document.createElement("p");
     budgetQuote.innerHTML = `Customer's budget: ${vendorQuote.budget}`;
@@ -399,19 +391,33 @@ const renderVendorQuotes = () => {
     submitResponse.className = "btn btn-secondary";
     submitResponse.innerHTML = "Submit";
 
-    divQuote.append(
-      budgetQuote,
-      guestQuote,
-      dateQuote,
-      commentsQuote,
-      statusQuote
-    );
+    if (!firstPage) {
+      divQuote.append(
+        customerQuote,
+        budgetQuote,
+        guestQuote,
+        dateQuote,
+        commentsQuote,
+        statusQuote
+      );
+      if (vendorQuote.status == "pending") {
+        divQuote.append(myResponse, submitResponse);
+      }
+      vendorQuotesRows.append(divQuote);
+    } else if (firstPage == "p" && vendorQuote.status == "pending") {
+      divQuote.append(
+        customerQuote,
+        budgetQuote,
+        guestQuote,
+        dateQuote,
+        commentsQuote,
+        statusQuote,
+        myResponse,
+        submitResponse
+      );
 
-    if (vendorQuote.status == "pending") {
-      divQuote.append(myResponse, submitResponse);
+      contentDiv.append(divQuote);
     }
-
-    vendorQuotesRows.append(divQuote);
 
     submitResponse.addEventListener("click", function() {
       editResponse();
